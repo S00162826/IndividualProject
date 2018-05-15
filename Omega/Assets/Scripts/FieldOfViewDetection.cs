@@ -8,6 +8,8 @@ public class FieldOfViewDetection : MonoBehaviour
     public float maxAngle;
     public float maxRadius;
 
+    private bool isInFOV = false;
+
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -20,7 +22,10 @@ public class FieldOfViewDetection : MonoBehaviour
         Gizmos.DrawRay(transform.position, fovLine1);
         Gizmos.DrawRay(transform.position, fovLine2);
 
-        Gizmos.color = Color.red;
+        if (!isInFOV)
+            Gizmos.color = Color.red;
+        else
+            Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position,(player.position - transform.position).normalized *maxRadius);
 
         Gizmos.color = Color.black;
@@ -37,13 +42,33 @@ public class FieldOfViewDetection : MonoBehaviour
         {
             if (overlaps[i] != null)
             {
-                if (overlaps[i] == target)
+                if (overlaps[i].transform == target)
                 {
+                    Vector3 directionBetween = (target.position - checkingObject.position).normalized;
+                    directionBetween.y *= 0;
 
+                    float angle = Vector3.Angle(checkingObject.forward, directionBetween);
+
+                    if (angle <= maxAngle)
+                    {
+                        Ray ray = new Ray(checkingObject.position, target.position - checkingObject.position);
+                        RaycastHit hit;
+
+                        if (Physics.Raycast(ray,out hit, maxRadius))
+                        {
+                            if (hit.transform == target)
+                                return true;
+                        }
+                    }
                 }
             }
         }
 
         return false;
+    }
+
+    private void Update()
+    {
+        isInFOV = inFOV(transform, player, maxAngle, maxRadius);
     }
 }

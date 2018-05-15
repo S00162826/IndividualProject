@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.Translate(Vector3.forward * Time.deltaTime * Input.GetAxis("Vertical") * moveSpeed);
         transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
+        //transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("PS4DPad_Horizontal") * moveSpeed);
     }
-
+    
 }
 

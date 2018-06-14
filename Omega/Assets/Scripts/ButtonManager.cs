@@ -12,6 +12,11 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
+    public void Restart(int level)
+    {
+        SceneManager.LoadScene(level);
+    }
+
     public void ExitGameBtn()
     {
         Application.Quit();

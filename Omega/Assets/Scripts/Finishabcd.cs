@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Finish : MonoBehaviour
+public class Finishabcd : MonoBehaviour
 {
     public Transform canvas;
 

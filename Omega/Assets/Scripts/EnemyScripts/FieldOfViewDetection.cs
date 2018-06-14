@@ -9,6 +9,16 @@ public class FieldOfViewDetection : MonoBehaviour
     public float maxRadius;
 
     private bool isInFOV = false;
+    
+    public void Attack()
+    {
+        if (isInFOV == true)
+        {
+            //move towards player
+            //attack player
+        }
+ 
+    }
 
     public void OnDrawGizmos()
     {

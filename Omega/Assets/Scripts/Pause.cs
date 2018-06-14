@@ -8,7 +8,7 @@ public class Pause : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("PS4_Options"))
+        if (Input.GetKeyDown(KeyCode.Escape)/* || Input.GetKeyDown("PS4_Options")*/)
         {
             Paused();
         }

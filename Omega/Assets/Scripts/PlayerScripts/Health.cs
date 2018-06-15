@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
         currentHealth.rectTransform.localScale = new Vector3(ratio, 1, 1);
     }
 
-    private void Damage(float damage)
+    private void TakeDamage(float damage)
     {
         health -= damage;
         if (health < 0)
@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
         UpdateHealth();
     }
 
-    private void Heal(float heal)
+    private void HealDamage(float heal)
     {
         health += heal;
         if (health > maxHealth)

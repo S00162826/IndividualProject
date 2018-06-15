@@ -33,11 +33,12 @@ public class GunController : MonoBehaviour {
 
                 newBullet.speed = bulletSpeed;
             }
-            else
-            {
-                shotCounter = 0;
-            }
+            
 
         }
-	}
+        else
+        {
+            shotCounter = 0;
+        }
+    }
 }

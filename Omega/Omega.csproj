@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\EnemyScripts\FieldOfViewDetection.cs" />
     <Compile Include="Assets\Scripts\Finishabcd.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\Crawl.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Damage.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Finish.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Health.cs" />

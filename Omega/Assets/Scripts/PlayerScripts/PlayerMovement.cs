@@ -42,8 +42,11 @@ public class PlayerMovement : MonoBehaviour
             transform.LookAt(new Vector3(pointToLook.x,transform.position.y,pointToLook.z));
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && theGun.ammo > 0)
+        {
             theGun.isFiring = true;
+
+        }
 
         if (Input.GetMouseButtonUp(0))
             theGun.isFiring = false;

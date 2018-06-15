@@ -14,6 +14,8 @@ public class GunController : MonoBehaviour {
 
     public Transform firePoint;
 
+    public float ammo;
+
 	void Start ()
     {
 		
@@ -21,24 +23,34 @@ public class GunController : MonoBehaviour {
 	
 	void Update ()
     {
-        if (isFiring)
-        {
-            shotCounter -= Time.deltaTime;
-            if(shotCounter <= 0)
+
+            if (isFiring)
             {
-                shotCounter = timeBetweenShots;
+                shotCounter -= Time.deltaTime;
+                if (shotCounter <= 0)
+                {
+                    shotCounter = timeBetweenShots;
 
-                BulletController newBullet = Instantiate(bullet,
-                    firePoint.position, firePoint.rotation) as BulletController;
+                    BulletController newBullet = Instantiate(bullet,
+                        firePoint.position, firePoint.rotation) as BulletController;
 
-                newBullet.speed = bulletSpeed;
-            }
+                    newBullet.speed = bulletSpeed;
+
+                    ammo = ammo - 1;
+                    //if (ammo <= 0)
+                    //{
+                    //    ammo = 0;
+                    //    return;
+                    //}
+                }
+
             
-
         }
         else
         {
             shotCounter = 0;
         }
+
+        
     }
 }

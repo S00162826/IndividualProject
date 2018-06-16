@@ -45,15 +45,25 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && theGun.ammo > 0)
         {
             theGun.isFiring = true;
-
         }
 
         if (Input.GetMouseButtonUp(0))
             theGun.isFiring = false;
 
+
+
     }
 
-     void FixedUpdate()
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "AmmoCrate")
+        {
+            theGun.ammo = theGun.ammo + 12;
+            Destroy(other.gameObject);
+        }
+    }
+
+    void FixedUpdate()
     {
         rb.velocity = moveVelocity;
     }

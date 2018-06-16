@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunController : MonoBehaviour {
 
@@ -15,6 +16,8 @@ public class GunController : MonoBehaviour {
     public Transform firePoint;
 
     public float ammo;
+
+    public Text ammoRemaining;
 
 	void Start ()
     {
@@ -51,6 +54,14 @@ public class GunController : MonoBehaviour {
             shotCounter = 0;
         }
 
+        ammoRemaining.text = ammo.ToString();
+
+        if (ammo < 4)
+        {
+            ammoRemaining.color = Color.red;
+        }
+        else
+            ammoRemaining.color = Color.white;
         
     }
 }

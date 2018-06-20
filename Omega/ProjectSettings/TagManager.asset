@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Heal
   - AmmoCrate
+  - Enemy
   layers:
   - Default
   - TransparentFX

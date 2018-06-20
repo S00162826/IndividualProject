@@ -28,6 +28,7 @@ public class Health : MonoBehaviour
             health = 0;
 
         UpdateHealth();
+
     }
 
     private void HealDamage(float heal)

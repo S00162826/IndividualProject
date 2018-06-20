@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     private Camera mainCamera;
 
     public GunController theGun;
+
+    public Text addAmmo;
+    public float ammoPickUp;
 
     void Start()
     {
@@ -58,8 +62,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "AmmoCrate")
         {
-            theGun.ammo = theGun.ammo + 12;
+            theGun.ammo = theGun.ammo + ammoPickUp;
             Destroy(other.gameObject);
+            addAmmo.text = "+" + ammoPickUp.ToString();
+            Destroy(addAmmo, 5f);
         }
     }
 

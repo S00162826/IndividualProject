@@ -80,13 +80,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ButtonManager.cs" />
     <Compile Include="Assets\Scripts\CameraScripts\CameraControl.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\EnemyPatrol.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\FieldOfViewDetection.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\NPCPatrol.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\Waypoint.cs" />
     <Compile Include="Assets\Scripts\Finishabcd.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />
-    <Compile Include="Assets\Scripts\PlayerScripts\Crawl.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Damage.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Finish.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Health.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />

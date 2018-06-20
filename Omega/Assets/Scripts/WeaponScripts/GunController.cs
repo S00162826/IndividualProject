@@ -62,6 +62,12 @@ public class GunController : MonoBehaviour {
         }
         else
             ammoRemaining.color = Color.white;
-        
+
+        if (ammo == 0)
+        {
+            ammoRemaining.text = "No Ammo";
+        }
+
+
     }
 }

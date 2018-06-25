@@ -14,7 +14,7 @@ public class FieldOfViewDetection : MonoBehaviour
     public Light spotLight;
     Color spotlightOriginalColor;
     float playerCaughtTimer;
-    float timeToSpotPlayer = .5f;
+    float timeToSpotPlayer = .1f;
 
     private void Start()
     {

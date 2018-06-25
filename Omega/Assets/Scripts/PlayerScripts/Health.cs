@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
 
     public Canvas GameOver;
 
+
     private void Start()
     {
         UpdateHealth();
@@ -41,16 +42,35 @@ public class Health : MonoBehaviour
         if (health > maxHealth)
             health = maxHealth;
 
+       // Destroy(mediPack, 2f);
+
         UpdateHealth();
     }
 
-    private void Update()
-    {
-        if (health <= 0)
-        {
-            GameOver.gameObject.SetActive(true);
-            Time.timeScale = 0;
-        }
-    }
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Player")
+    //    {
+    //        health += 30;
+           
+    //    }
 
+    //    //if (other.gameObject.tag == "Heal")
+    //    //{
+
+    //    //    Destroy(other.gameObject);
+
+
+    //    //}
+
+    //}
+        private void Update()
+        {
+            if (health <= 0)
+            {
+                GameOver.gameObject.SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
+    
 }

@@ -83,6 +83,14 @@ public class PlayerMovement : MonoBehaviour
             Destroy(addAmmo, 5f);
         }
 
+        if (other.gameObject.tag == "Heal")
+        {
+
+            Destroy(other.gameObject,2f);
+
+
+        }
+
         if (other.tag == "Finish")
         {
             Disable();

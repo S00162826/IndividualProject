@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public Text addAmmo;
     public float ammoPickUp;
 
+    public float mediPackTimer;
+
     bool disabled;
 
     void Start()
@@ -86,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.tag == "Heal")
         {
 
-            Destroy(other.gameObject,2f);
+            Destroy(other.gameObject, mediPackTimer);
 
 
         }

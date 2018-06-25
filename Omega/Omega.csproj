@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\EnemyScripts\FieldOfViewDetection.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\NPCPatrol.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\Waypoint.cs" />
+    <Compile Include="Assets\Scripts\Key.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Damage.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Health.cs" />

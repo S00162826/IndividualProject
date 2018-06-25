@@ -29,8 +29,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Vector3 movement = Vector3.zero;
+        Time.timeScale = 0;
         if (!disabled)
         {
+            Time.timeScale = 1;
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
@@ -40,11 +42,11 @@ public class PlayerMovement : MonoBehaviour
             moveVelocity = movement * moveSpeed;
 
             rb.MovePosition(transform.position + movement);
-
+            
             Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
             float rayLength;
-
+        
             if (groundPlane.Raycast(cameraRay, out rayLength))
             {
                 Vector3 pointToLook = cameraRay.GetPoint(rayLength);

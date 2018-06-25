@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class NPCPatrol : MonoBehaviour
 {
-    public bool patrolling = true;
+    public bool patrolling;
 
 
     //Whether the agent waits on each node.

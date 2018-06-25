@@ -10,6 +10,8 @@ public class FieldOfViewDetection : MonoBehaviour
     public float maxRadius;
 
     private bool isInFOV = false;
+
+    public NPCPatrol isPatrolling;
     
      void Caught()
     {
@@ -82,9 +84,10 @@ public class FieldOfViewDetection : MonoBehaviour
             if (PlayerSpotted != null)
             {
                 PlayerSpotted();
-            Time.timeScale = 0;
 
+                isPatrolling.patrolling = false;
             }
+            
         }
     }
 }

@@ -137,7 +137,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1163325796}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -735,7 +735,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.98626727, g: 1, b: 0.066176474, a: 1}
-  m_Intensity: 6
+  m_Intensity: 37.02
   m_Range: 5
   m_SpotAngle: 80
   m_CookieSize: 10
@@ -806,11 +806,11 @@ RectTransform:
   m_Children:
   - {fileID: 1851135381}
   m_Father: {fileID: 1163325796}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36, y: -93}
+  m_AnchoredPosition: {x: 36.00003, y: -93}
   m_SizeDelta: {x: 127.3, y: 22.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &316362284
@@ -1487,7 +1487,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoseCanvas: {fileID: 392406048}
   WinCanvas: {fileID: 61208463}
-  replay: {fileID: 0}
 --- !u!1 &480724850
 GameObject:
   m_ObjectHideFlags: 0
@@ -2932,6 +2931,11 @@ Prefab:
       propertyPath: bulletSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114200393552710270, guid: 88ea63b0ed5dff844a2c9f2b99683dbb,
+        type: 2}
+      propertyPath: GameOver
+      value: 
+      objectReference: {fileID: 392406047}
     m_RemovedComponents:
     - {fileID: 114318214146212216, guid: 88ea63b0ed5dff844a2c9f2b99683dbb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 88ea63b0ed5dff844a2c9f2b99683dbb, type: 2}
@@ -3180,7 +3184,6 @@ GameObject:
   - component: {fileID: 927884142}
   - component: {fileID: 927884143}
   - component: {fileID: 927884141}
-  - component: {fileID: 927884144}
   - component: {fileID: 927884145}
   m_Layer: 0
   m_Name: Enemy
@@ -3288,7 +3291,7 @@ MonoBehaviour:
   player: {fileID: 1732550328}
   maxAngle: 45
   maxRadius: 2
-  isPatrolling: {fileID: 0}
+  spotLight: {fileID: 282068697}
 --- !u!195 &927884143
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3310,17 +3313,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &927884144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 927884136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c73c9e2718bfe63468e526981c21a7ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &927884145
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3511,6 +3503,71 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1040650624}
+--- !u!1 &1076166997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1076166999}
+  - component: {fileID: 1076166998}
+  m_Layer: 0
+  m_Name: Spotlight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1076166998
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076166997}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 0
+  m_Color: {r: 0.014705896, g: 0.43490502, b: 1, a: 1}
+  m_Intensity: 6.8
+  m_Range: 10
+  m_SpotAngle: 28
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &1076166999
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076166997}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 3.2, z: -3.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2113897892}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1103261222
 GameObject:
   m_ObjectHideFlags: 0
@@ -3651,9 +3708,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1504141807}
-  - {fileID: 316362283}
   - {fileID: 1688149600}
   - {fileID: 26193860}
+  - {fileID: 316362283}
   m_Father: {fileID: 392406048}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4742,9 +4799,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Paused
-        m_Mode: 1
+      - m_Target: {fileID: 1823652152}
+        m_MethodName: Restart
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5043,11 +5100,11 @@ RectTransform:
   m_Children:
   - {fileID: 1445175958}
   m_Father: {fileID: 1163325796}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -39, y: -55}
+  m_AnchoredPosition: {x: -38.99997, y: -55}
   m_SizeDelta: {x: 127.3, y: 22.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1688149601
@@ -5547,7 +5604,6 @@ GameObject:
   - component: {fileID: 1823652151}
   - component: {fileID: 1823652150}
   - component: {fileID: 1823652152}
-  - component: {fileID: 1823652153}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -5593,20 +5649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6994d5a34cc9a49a199316431d40ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1823652153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1823652149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 646fcd40aff0eb8478f65a0b6d6fb4b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FinishCanvas: {fileID: 0}
-  player: {fileID: 0}
-  rb: {fileID: 0}
 --- !u!1 &1829175876
 GameObject:
   m_ObjectHideFlags: 0
@@ -5770,8 +5812,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1823652152}
-        m_MethodName: NewGameBtn
-        m_Mode: 5
+        m_MethodName: Restart
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6533,7 +6575,7 @@ GameObject:
   - component: {fileID: 2113897888}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Camera
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6551,8 +6593,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1732550328}
   maxAngle: 44.9
-  maxRadius: 6.5
-  isPatrolling: {fileID: 0}
+  maxRadius: 3.97
+  spotLight: {fileID: 1076166998}
 --- !u!23 &2113897889
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6613,7 +6655,8 @@ Transform:
   m_LocalRotation: {x: 0.21595658, y: 0.6733222, z: -0.21595658, w: 0.6733222}
   m_LocalPosition: {x: 3.19, y: 2.81, z: -4.535}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.8}
-  m_Children: []
+  m_Children:
+  - {fileID: 1076166999}
   m_Father: {fileID: 0}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 35.566, y: 90.00001, z: 0}

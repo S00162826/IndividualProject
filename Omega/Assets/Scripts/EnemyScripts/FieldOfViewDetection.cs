@@ -11,12 +11,14 @@ public class FieldOfViewDetection : MonoBehaviour
 
     private bool isInFOV = false;
 
-    public NPCPatrol isPatrolling;
-    
-     void Caught()
+    public Light spotLight;
+    Color spotlightOriginalColor;
+    float playerCaughtTimer;
+    float timeToSpotPlayer = .5f;
+
+    private void Start()
     {
-        
- 
+        spotlightOriginalColor = spotLight.color;
     }
 
     public void OnDrawGizmos()
@@ -81,13 +83,21 @@ public class FieldOfViewDetection : MonoBehaviour
         isInFOV = inFOV(transform, player, maxAngle, maxRadius);
         if (isInFOV == true)
         {
+            playerCaughtTimer += Time.deltaTime;
+        }
+        else
+        {
+            playerCaughtTimer -= Time.deltaTime;
+        }
+        playerCaughtTimer = Mathf.Clamp(playerCaughtTimer, 0, timeToSpotPlayer);
+        spotLight.color = Color.Lerp(spotlightOriginalColor, Color.red, playerCaughtTimer / timeToSpotPlayer);
+
+        if (playerCaughtTimer >= timeToSpotPlayer)
+        {
             if (PlayerSpotted != null)
             {
                 PlayerSpotted();
-
-                isPatrolling.patrolling = false;
             }
-            
         }
     }
 }

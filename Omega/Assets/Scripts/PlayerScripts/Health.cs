@@ -5,10 +5,14 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+  //  public static event System.Action PlayerDead;
+
     public Image currentHealth;
 
-    private float health = 100;
-    private float maxHealth = 100;
+    public float health = 100;
+    public float maxHealth = 100;
+
+    public Canvas GameOver;
 
     private void Start()
     {
@@ -38,6 +42,15 @@ public class Health : MonoBehaviour
             health = maxHealth;
 
         UpdateHealth();
+    }
+
+    private void Update()
+    {
+        if (health <= 0)
+        {
+            GameOver.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
 }

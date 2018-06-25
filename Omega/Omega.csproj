@@ -87,10 +87,9 @@
     <Compile Include="Assets\Scripts\Finishabcd.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Damage.cs" />
-    <Compile Include="Assets\Scripts\PlayerScripts\Finish.cs" />
-    <Compile Include="Assets\Scripts\PlayerScripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Health.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\WinLoseConditions.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
     <Compile Include="Assets\Scripts\WeaponScripts\Ammo.cs" />
     <Compile Include="Assets\Scripts\WeaponScripts\BulletController.cs" />

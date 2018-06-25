@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public event System.Action OnLevelComplete;
+
     public float moveSpeed = 5;
     Rigidbody rb;
 
@@ -79,6 +81,15 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             addAmmo.text = "+" + ammoPickUp.ToString();
             Destroy(addAmmo, 5f);
+        }
+
+        if (other.tag == "Finish")
+        {
+            Disable();
+            if (OnLevelComplete != null)
+            {
+                OnLevelComplete();
+            }
         }
     }
 

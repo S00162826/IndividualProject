@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class NPCPatrol : MonoBehaviour
 {
+    public bool patrolling = true;
+
 
     //Whether the agent waits on each node.
     [SerializeField]
@@ -34,93 +36,106 @@ public class NPCPatrol : MonoBehaviour
     {
         navMeshAgent = this.GetComponent<NavMeshAgent>();
 
-        if (navMeshAgent == null)
-            Debug.LogError("The nav mash agent component is not attatched to " + gameObject.name);
-
-        else
+        if (patrolling == true)
         {
-            if
-            (patrolPoints != null && patrolPoints.Count >= 2)
-            {
-                currentPatrolIndex = 0;
-                SetDestination();
-            }
+
+            if (navMeshAgent == null)
+                Debug.LogError("The nav mash agent component is not attatched to " + gameObject.name);
+
             else
             {
-                Debug.LogError("Insufficient patrol points for basic controlling behaviour");
-            }
+                if
+                (patrolPoints != null && patrolPoints.Count >= 2)
+                {
+                    currentPatrolIndex = 0;
+                    SetDestination();
+                }
+                else
+                {
+                    Debug.LogError("Insufficient patrol points for basic controlling behaviour");
+                }
 
+            }
         }
     }
 
     void Update()
     {
-        //Check if close to destination
-        if (travelling && navMeshAgent.remainingDistance <= 1.0f)
+        if (patrolling == true)
         {
-            travelling = false;
-
-            //If going to wait, then wait
-            if (patrolWaiting)
+            //Check if close to destination
+            if (travelling && navMeshAgent.remainingDistance <= 1.0f)
             {
-                waiting = true;
-                waitTimer = 0f;
+                travelling = false;
+
+                //If going to wait, then wait
+                if (patrolWaiting)
+                {
+                    waiting = true;
+                    waitTimer = 0f;
+                }
+                else
+                {
+                    ChangePatrolPoint();
+                    SetDestination();
+                }
             }
-            else
-            {
-                ChangePatrolPoint();
-                SetDestination();
-            }
-        }
 
-        //If waiting
-        if (waiting)
-        {
-            waitTimer += Time.deltaTime;
-            if (waitTimer >= totalWaitTime)
+            //If waiting
+            if (waiting)
             {
-                waiting = false;
+                waitTimer += Time.deltaTime;
+                if (waitTimer >= totalWaitTime)
+                {
+                    waiting = false;
 
-                ChangePatrolPoint();
-                SetDestination();
+                    ChangePatrolPoint();
+                    SetDestination();
+                }
             }
         }
     }
 
     private void SetDestination()
     {
-        if(patrolPoints != null)
+        if (patrolling == true)
         {
-            Vector3 targetVector = patrolPoints[currentPatrolIndex].transform.position;
-            navMeshAgent.SetDestination(targetVector);
-            travelling = true;
+            if (patrolPoints != null)
+            {
+                Vector3 targetVector = patrolPoints[currentPatrolIndex].transform.position;
+                navMeshAgent.SetDestination(targetVector);
+                travelling = true;
+            }
         }
     }
 
     private void ChangePatrolPoint()
     {
-        if (Random.Range(0f,1f)<= switchProbability)
+        if (patrolling == true)
         {
-            patrolForward = !patrolForward;
-        }
-
-        if (patrolForward)
-        {
-            currentPatrolIndex++;
-
-            if (currentPatrolIndex >= patrolPoints.Count)
+            if (Random.Range(0f, 1f) <= switchProbability)
             {
-                currentPatrolIndex = 0;
+                patrolForward = !patrolForward;
             }
-        }
 
-        else
-        {
-            currentPatrolIndex--;
-
-            if (currentPatrolIndex < 0)
+            if (patrolForward)
             {
-                currentPatrolIndex = patrolPoints.Count - 1;
+                currentPatrolIndex++;
+
+                if (currentPatrolIndex >= patrolPoints.Count)
+                {
+                    currentPatrolIndex = 0;
+                }
+            }
+
+            else
+            {
+                currentPatrolIndex--;
+
+                if (currentPatrolIndex < 0)
+                {
+                    currentPatrolIndex = patrolPoints.Count - 1;
+                }
             }
         }
     }

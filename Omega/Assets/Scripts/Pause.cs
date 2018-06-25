@@ -6,12 +6,21 @@ public class Pause : MonoBehaviour
     public Transform HealthCanvas;
     public Transform MiniMapCanvas;
 
+    bool disabled;
+
+
+    private void Start()
+    {
+        FieldOfViewDetection.PlayerSpotted += Disable;
+    }
+
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)/* || Input.GetKeyDown("PS4_Options")*/)
-        {
-            Paused();
-        }
+        if (!disabled)
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Paused();
+            }
     }
 
     public void Paused()
@@ -32,7 +41,11 @@ public class Pause : MonoBehaviour
             Time.timeScale = 1;
             AudioListener.volume = 1;
         }
-
-
     }
+
+    private void Disable()
+    {
+        disabled = true;
+    }
+
 }

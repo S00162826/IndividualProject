@@ -7,6 +7,8 @@ TagManager:
   - Heal
   - AmmoCrate
   - Enemy
+  - Bullet
+  - Camera
   layers:
   - Default
   - TransparentFX

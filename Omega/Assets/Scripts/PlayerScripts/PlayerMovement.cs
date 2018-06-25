@@ -17,45 +17,56 @@ public class PlayerMovement : MonoBehaviour
     public Text addAmmo;
     public float ammoPickUp;
 
+    bool disabled;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
+        FieldOfViewDetection.PlayerSpotted += Disable;
     }
 
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(horizontal * moveSpeed * Time.deltaTime,
-                                      0, vertical * moveSpeed * Time.deltaTime);
-
-        moveVelocity = movement * moveSpeed;
-
-        rb.MovePosition(transform.position + movement);
-
-        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up,Vector3.zero);
-        float rayLength;
-
-        if (groundPlane.Raycast(cameraRay,out rayLength))
+        Vector3 movement = Vector3.zero;
+        if (!disabled)
         {
-            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
 
-            transform.LookAt(new Vector3(pointToLook.x,transform.position.y,pointToLook.z));
+            movement = new Vector3(horizontal * moveSpeed * Time.deltaTime,
+                                          0, vertical * moveSpeed * Time.deltaTime);
+
+            moveVelocity = movement * moveSpeed;
+
+            rb.MovePosition(transform.position + movement);
+
+            Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+            float rayLength;
+
+            if (groundPlane.Raycast(cameraRay, out rayLength))
+            {
+                Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+
+                transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+            }
+
+            if (Input.GetMouseButtonDown(0) && theGun.ammo > 0)
+            {
+                theGun.isFiring = true;
+            }
+
+            if (Input.GetMouseButtonUp(0))
+                theGun.isFiring = false;
+
+
         }
+    }
 
-        if (Input.GetMouseButtonDown(0) && theGun.ammo > 0)
-        {
-            theGun.isFiring = true;
-        }
-
-        if (Input.GetMouseButtonUp(0))
-            theGun.isFiring = false;
-
-
-
+    private void Disable()
+    {
+        disabled = true;
     }
 
     void OnTriggerEnter(Collider other)
@@ -72,6 +83,11 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = moveVelocity;
+    }
+
+    private void OnDestroy()
+    {
+        FieldOfViewDetection.PlayerSpotted -= Disable;
     }
 
 }

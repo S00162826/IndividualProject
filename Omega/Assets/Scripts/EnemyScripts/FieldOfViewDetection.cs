@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class FieldOfViewDetection : MonoBehaviour
 {
+    public static event System.Action PlayerSpotted;
     public Transform player;
     public float maxAngle;
     public float maxRadius;
 
     private bool isInFOV = false;
     
-    public void Attack()
+     void Caught()
     {
-        if (isInFOV == true)
-        {
-            //move towards player
-            //attack player
-        }
+        
  
     }
 
@@ -80,5 +77,14 @@ public class FieldOfViewDetection : MonoBehaviour
     private void Update()
     {
         isInFOV = inFOV(transform, player, maxAngle, maxRadius);
+        if (isInFOV == true)
+        {
+            if (PlayerSpotted != null)
+            {
+                PlayerSpotted();
+            Time.timeScale = 0;
+
+            }
+        }
     }
 }

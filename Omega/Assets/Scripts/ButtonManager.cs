@@ -15,6 +15,8 @@ public class ButtonManager : MonoBehaviour
     public void Restart(int level)
     {
         SceneManager.LoadScene(level);
+        Time.timeScale = 1;
+        GameOver 
     }
 
     public void ExitGameBtn()

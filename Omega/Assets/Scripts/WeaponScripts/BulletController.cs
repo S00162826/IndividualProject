@@ -12,12 +12,15 @@ public class BulletController : MonoBehaviour
 
     }
 
-    void OnCollisionEnter()
-    {
+    //void OnTriggerEnter(Collider col)
+    //{
+    //    if (col.gameObject.tag == "Wall")
+    //    {
+    //        Destroy(gameObject);
+           
+    //    }
 
-        Destroy(gameObject);
-
-    }
+    //}
 
     void Update()
     {

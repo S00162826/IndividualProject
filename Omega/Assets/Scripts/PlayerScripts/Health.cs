@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-  //  public static event System.Action PlayerDead;
-
     public Image currentHealth;
 
     public float health = 100;
@@ -43,28 +41,9 @@ public class Health : MonoBehaviour
         if (health > maxHealth)
             health = maxHealth;
 
-       // Destroy(mediPack, 2f);
-
         UpdateHealth();
     }
 
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag == "Player")
-    //    {
-    //        health += 30;
-           
-    //    }
-
-    //    //if (other.gameObject.tag == "Heal")
-    //    //{
-
-    //    //    Destroy(other.gameObject);
-
-
-    //    //}
-
-    //}
         private void Update()
         {
             if (health <= 0)

@@ -12,6 +12,7 @@ TagManager:
   - Door
   - Key
   - Wall
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

@@ -87,10 +87,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.gameObject.tag == "Heal")
         {
-
             Destroy(other.gameObject, mediPackTimer);
+        }
 
-
+        if (other.gameObject.tag == "EnemyBullet")
+        {
+          
         }
 
         if (other.tag == "Finish")

@@ -20,7 +20,7 @@ public class ArmedEnemy : MonoBehaviour
         timeBetweenShots = startTimeBetweenShots;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         //transform.LookAt(player);
 

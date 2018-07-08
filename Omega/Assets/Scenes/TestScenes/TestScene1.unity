@@ -4260,7 +4260,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4575126416924862, guid: 88ea63b0ed5dff844a2c9f2b99683dbb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.52
+      value: 5.98
       objectReference: {fileID: 0}
     - target: {fileID: 4575126416924862, guid: 88ea63b0ed5dff844a2c9f2b99683dbb, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4268,7 +4268,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4575126416924862, guid: 88ea63b0ed5dff844a2c9f2b99683dbb, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -10.6
+      value: -22.31
       objectReference: {fileID: 0}
     - target: {fileID: 4575126416924862, guid: 88ea63b0ed5dff844a2c9f2b99683dbb, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5491,7 +5491,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1362815011}
   m_LocalRotation: {x: -0, y: 0.70711035, z: -0, w: 0.70710325}
-  m_LocalPosition: {x: -0.28, y: 0.934, z: -23.14}
+  m_LocalPosition: {x: -0.28, y: 1.15, z: -23.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1135313464}
@@ -5514,7 +5514,7 @@ MonoBehaviour:
   speed: 2
   stoppingDistance: 5
   retreatDistance: 2
-  startTimeBetweenShots: 2
+  startTimeBetweenShots: 1
   projectile: {fileID: 1163607820882072, guid: ffa355b572a0c854ab897e0eaf6a41ad, type: 2}
 --- !u!1 &1433395287
 GameObject:

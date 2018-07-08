@@ -14,14 +14,14 @@ public class EnemyWeapon : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        target = new Vector3(player.position.x, player.position.y);
+        target = new Vector3(player.position.x, player.position.y,player.position.z);
     }
 
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
-        if (transform.position.x == target.x && transform.position.y == target.y)
+        if (transform.position.x == target.x && transform.position.y == target.y && transform.position.z == target.z)
         {
             DestroyProjectile();
         }

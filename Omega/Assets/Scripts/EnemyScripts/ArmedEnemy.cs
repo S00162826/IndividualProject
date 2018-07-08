@@ -22,7 +22,7 @@ public class ArmedEnemy : MonoBehaviour
 
     void Update()
     {
-        //transform.LookAt(player);
+        transform.LookAt(player.position);
 
         if (Vector3.Distance(transform.position,player.position) > stoppingDistance)
         {

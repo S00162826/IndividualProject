@@ -25,7 +25,9 @@ public class PlayerMovement : MonoBehaviour
 
     private BoxCollider boxCollider;
     public GameObject crawling;
+    public GameObject gun;
     private bool isCrawling = false;
+    private bool cansStand = true;
     private MeshRenderer MeshRenderer;
 
     void Start()
@@ -53,11 +55,11 @@ public class PlayerMovement : MonoBehaviour
             moveVelocity = movement * moveSpeed;
 
             rb.MovePosition(transform.position + movement);
-            
+
             Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
             float rayLength;
-        
+
             if (groundPlane.Raycast(cameraRay, out rayLength))
             {
                 Vector3 pointToLook = cameraRay.GetPoint(rayLength);
@@ -74,32 +76,39 @@ public class PlayerMovement : MonoBehaviour
                 theGun.isFiring = false;
 
             //
-            if (Input.GetKeyDown("c") && isCrawling == false)
-            {
-                //if (isCrawling == false)
-                //{
-                    isCrawling = true;
-                    boxCollider.size = new Vector3(1.0f, .2f, 1.0f);
-                    crawling.SetActive(true);
-                    moveSpeed = 1;
-                    MeshRenderer.enabled = false;
-                }
-                else if (Input.GetKeyDown("c") && isCrawling == true)
-            {
-                    isCrawling = false;
-                    boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
-                    crawling.SetActive(false);
-                    moveSpeed = 3;
-                    MeshRenderer.enabled = true;
-
-            }
+            if(cansStand == true)
+            Standing();
         }
-        
+
     }
 
     private void Disable()
     {
         disabled = true;
+    }
+
+    private void Standing()
+    {
+        if (Input.GetKeyDown("c") && isCrawling == false)
+        {
+
+            isCrawling = true;
+            boxCollider.size = new Vector3(1.0f, .2f, 1.0f);
+            crawling.SetActive(true);
+            gun.SetActive(false);
+            moveSpeed = 1;
+            MeshRenderer.enabled = false;
+        }
+        else if (Input.GetKeyDown("c") && isCrawling == true)
+        {
+            isCrawling = false;
+            boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
+            crawling.SetActive(false);
+            gun.SetActive(true);
+            moveSpeed = 3;
+            MeshRenderer.enabled = true;
+
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -117,7 +126,17 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject, mediPackTimer);
         }
 
-        
+        if (other.gameObject.tag == "NoStandZone")
+        {
+            cansStand = false;
+
+        }
+
+        if (other.gameObject.tag == "StandZone")
+        {
+            cansStand = true;
+
+        }
 
         if (other.tag == "Finish")
         {
@@ -128,15 +147,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    void OnTriggerStay(Collider other)
-    {
-        if(other.gameObject.tag == "NoStandZone")
-        {
-            isCrawling = true;
-        }
-    }
 
-        void FixedUpdate()
+
+
+    void FixedUpdate()
     {
         rb.velocity = moveVelocity;
     }

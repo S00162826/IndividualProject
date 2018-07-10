@@ -8,12 +8,13 @@ public class CameraControl : MonoBehaviour
     public Transform target;
 
     public float smoothSpeed = 0.125f;
-    private Vector3 offset = new Vector3(0f, 70f, -0f);
+    private Vector3 offset = new Vector3(0f, 50f, -20f);
 
     private bool standing = true; 
 
     void LateUpdate()
     {
+        
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(target.position,desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;

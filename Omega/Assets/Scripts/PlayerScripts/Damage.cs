@@ -5,7 +5,7 @@ using UnityEngine;
 public class Damage : MonoBehaviour {
 
     public bool isDamaging;
-    public float damage = 40;
+    public float damage;
    
 
     private void OnTriggerStay(Collider col)

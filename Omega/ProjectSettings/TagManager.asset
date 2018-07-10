@@ -13,6 +13,7 @@ TagManager:
   - Key
   - Wall
   - EnemyBullet
+  - NoStandZone
   layers:
   - Default
   - TransparentFX

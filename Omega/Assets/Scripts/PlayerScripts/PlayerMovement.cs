@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public event System.Action OnLevelComplete;
 
-    public float moveSpeed = 5;
+    private float moveSpeed = 3;
     Rigidbody rb;
 
     private Vector3 moveVelocity;
@@ -23,11 +23,18 @@ public class PlayerMovement : MonoBehaviour
 
     bool disabled;
 
+    private BoxCollider boxCollider;
+    public GameObject crawling;
+    private bool isCrawling = false;
+    private MeshRenderer MeshRenderer;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
         FieldOfViewDetection.PlayerSpotted += Disable;
+        boxCollider = GetComponent<BoxCollider>();
+        MeshRenderer = GetComponent<MeshRenderer>();
     }
 
     void Update()
@@ -66,8 +73,28 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
                 theGun.isFiring = false;
 
+            //
+            if (Input.GetKeyDown("c") && isCrawling == false)
+            {
+                //if (isCrawling == false)
+                //{
+                    isCrawling = true;
+                    boxCollider.size = new Vector3(1.0f, .2f, 1.0f);
+                    crawling.SetActive(true);
+                    moveSpeed = 1;
+                    MeshRenderer.enabled = false;
+                }
+                else if (Input.GetKeyDown("c") && isCrawling == true)
+            {
+                    isCrawling = false;
+                    boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
+                    crawling.SetActive(false);
+                    moveSpeed = 3;
+                    MeshRenderer.enabled = true;
 
+            }
         }
+        
     }
 
     private void Disable()
@@ -90,10 +117,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject, mediPackTimer);
         }
 
-        if (other.gameObject.tag == "EnemyBullet")
-        {
-          
-        }
+        
 
         if (other.tag == "Finish")
         {
@@ -104,8 +128,15 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag == "NoStandZone")
+        {
+            isCrawling = true;
+        }
+    }
 
-    void FixedUpdate()
+        void FixedUpdate()
     {
         rb.velocity = moveVelocity;
     }

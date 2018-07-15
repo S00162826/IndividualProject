@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 moveVelocity;
 
-    private Camera mainCamera;
+    public Camera mainCamera;
 
     public GunController theGun;
 
@@ -30,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
     private bool cansStand = true;
     private MeshRenderer MeshRenderer;
 
+    Animator animator;
+    
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -46,9 +49,10 @@ public class PlayerMovement : MonoBehaviour
         if (!disabled)
         {
             Time.timeScale = 1;
+            animator.SetBool("walking", true);
+
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
-
             movement = new Vector3(horizontal * moveSpeed * Time.deltaTime,
                                           0, vertical * moveSpeed * Time.deltaTime);
 
@@ -78,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
             //
             if(cansStand == true)
             Standing();
+
         }
 
     }
@@ -93,16 +98,19 @@ public class PlayerMovement : MonoBehaviour
         {
 
             isCrawling = true;
-            boxCollider.size = new Vector3(1.0f, .2f, 1.0f);
+            boxCollider.size = new Vector3(1.0f, .3f, 1.0f);
+            boxCollider.center = new Vector3(0f, -.3f, 0f);
             crawling.SetActive(true);
             gun.SetActive(false);
             moveSpeed = 1;
             MeshRenderer.enabled = false;
+          
         }
         else if (Input.GetKeyDown("c") && isCrawling == true)
         {
             isCrawling = false;
             boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
+            boxCollider.center = new Vector3(0f, 0f, 0f);
             crawling.SetActive(false);
             gun.SetActive(true);
             moveSpeed = 3;

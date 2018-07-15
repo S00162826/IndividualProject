@@ -15,6 +15,7 @@ TagManager:
   - EnemyBullet
   - NoStandZone
   - StandZone
+  - CrawlingCamera
   layers:
   - Default
   - TransparentFX

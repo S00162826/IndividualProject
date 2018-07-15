@@ -7,7 +7,7 @@ public class NPCPatrol : MonoBehaviour
 {
     public bool patrolling;
 
-
+    Animator animator;
     //Whether the agent waits on each node.
     [SerializeField]
     bool patrolWaiting;
@@ -34,6 +34,7 @@ public class NPCPatrol : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         navMeshAgent = this.GetComponent<NavMeshAgent>();
 
         if (patrolling == true)
@@ -76,6 +77,7 @@ public class NPCPatrol : MonoBehaviour
                 }
                 else
                 {
+                    
                     ChangePatrolPoint();
                     SetDestination();
                 }
@@ -105,6 +107,7 @@ public class NPCPatrol : MonoBehaviour
                 Vector3 targetVector = patrolPoints[currentPatrolIndex].transform.position;
                 navMeshAgent.SetDestination(targetVector);
                 travelling = true;
+                
             }
         }
     }
@@ -121,7 +124,7 @@ public class NPCPatrol : MonoBehaviour
             if (patrolForward)
             {
                 currentPatrolIndex++;
-
+                animator.SetBool("walking", true);
                 if (currentPatrolIndex >= patrolPoints.Count)
                 {
                     currentPatrolIndex = 0;

@@ -19,6 +19,8 @@ public class GunController : MonoBehaviour {
 
     public Text ammoRemaining;
 
+    private bool cantUseWeapon = true;
+
 	void Start ()
     {
 		
@@ -67,7 +69,5 @@ public class GunController : MonoBehaviour {
         {
             ammoRemaining.text = "No Ammo";
         }
-
-
     }
 }

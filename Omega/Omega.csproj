@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraScripts\CameraControl.cs" />
+    <Compile Include="Assets\Scripts\CameraScripts\MiniCamControl.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\ArmedEnemy.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\FieldOfViewDetection.cs" />
@@ -94,11 +95,15 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\WinLoseConditions.cs" />
     <Compile Include="Assets\Scripts\UI\ButtonManager.cs" />
+    <Compile Include="Assets\Scripts\UI\MenuControl.cs" />
     <Compile Include="Assets\Scripts\UI\Pause.cs" />
     <Compile Include="Assets\Scripts\WeaponScripts\Ammo.cs" />
     <Compile Include="Assets\Scripts\WeaponScripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\WeaponScripts\EnemyWeapon.cs" />
     <Compile Include="Assets\Scripts\WeaponScripts\GunController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\ToonSoldiers_demo\ToonSoldiers_demo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveVelocity;
 
     public Camera mainCamera;
+    public Camera fpsCamera;
 
     public GunController theGun;
 
@@ -30,16 +31,23 @@ public class PlayerMovement : MonoBehaviour
     private bool cansStand = true;
     private MeshRenderer MeshRenderer;
 
-    Animator animator;
+    public Animator animator;
+    public Image Black;
     
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        mainCamera = FindObjectOfType<Camera>();
+        mainCamera = /*FindObjectOfType<Camera>();*/ GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         FieldOfViewDetection.PlayerSpotted += Disable;
         boxCollider = GetComponent<BoxCollider>();
         MeshRenderer = GetComponent<MeshRenderer>();
+    }
+
+    IEnumerator Fading()
+    {
+        animator.SetBool("Fade", true);
+        yield return new WaitUntil(() => Black.color.a == 1);
     }
 
     void Update()
@@ -49,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         if (!disabled)
         {
             Time.timeScale = 1;
-            animator.SetBool("walking", true);
+           // animator.SetBool("walking", true);
 
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
@@ -148,6 +156,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.tag == "Finish")
         {
+            StartCoroutine(Fading());
             Disable();
             if (OnLevelComplete != null)
             {

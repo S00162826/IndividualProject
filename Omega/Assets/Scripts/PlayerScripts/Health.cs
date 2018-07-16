@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
 
     public Canvas GameOver;
 
+    public Text healthText;
 
     private void Start()
     {
@@ -51,6 +52,8 @@ public class Health : MonoBehaviour
                 GameOver.gameObject.SetActive(true);
                 Time.timeScale = 0;
             }
+
+        healthText.text = health.ToString() + "/" + maxHealth; 
         }
     
 }

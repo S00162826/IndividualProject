@@ -11,14 +11,14 @@ public class FieldOfViewDetection : MonoBehaviour
 
     private bool isInFOV = false;
 
-    public Light spotLight;
-    Color spotlightOriginalColor;
+    //public Light spotLight;
+    //Color spotlightOriginalColor;
     float playerCaughtTimer;
     float timeToSpotPlayer = .1f;
 
     private void Start()
     {
-        spotlightOriginalColor = spotLight.color;
+       // spotlightOriginalColor = spotLight.color;
     }
 
     public void OnDrawGizmos()
@@ -90,7 +90,7 @@ public class FieldOfViewDetection : MonoBehaviour
             playerCaughtTimer -= Time.deltaTime;
         }
         playerCaughtTimer = Mathf.Clamp(playerCaughtTimer, 0, timeToSpotPlayer);
-        spotLight.color = Color.Lerp(spotlightOriginalColor, Color.red, playerCaughtTimer / timeToSpotPlayer);
+        //spotLight.color = Color.Lerp(spotlightOriginalColor, Color.red, playerCaughtTimer / timeToSpotPlayer);
 
         if (playerCaughtTimer >= timeToSpotPlayer)
         {

@@ -8,7 +8,7 @@ public class MenuControl : MonoBehaviour
 {
 
     public int index;
-    public string levelNAme;
+    public string levelName;
 
     public Image black;
     public Animator anim;

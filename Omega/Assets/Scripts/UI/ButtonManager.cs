@@ -1,15 +1,28 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
-    public void NewGameBtn(string newGameLevel)
+
+    public int index;
+    public string levelName;
+
+    public Image black;
+    public Animator anim;
+
+
+    public void NewGameBtn(/*string newGameLevel*/)
     {
-        SceneManager.LoadScene(newGameLevel);
-        if (Time.timeScale == 0)
-        {
-            Time.timeScale = 1;
-        }
+        StartCoroutine(Fading());
+        //SceneManager.LoadScene(newGameLevel);
+        //if (Time.timeScale == 0)
+        //{
+           
+        //    Time.timeScale = 1;
+        //}
     }
 
     public void Restart(int level)
@@ -22,8 +35,17 @@ public class ButtonManager : MonoBehaviour
 
     }
 
+
+
     public void ExitGameBtn()
     {
         Application.Quit();
+    }
+
+   IEnumerator Fading()
+    {
+        anim.SetBool("fade", true);
+        yield return new WaitUntil(() => black.color.a == 1);
+        SceneManager.LoadScene(index);
     }
 }

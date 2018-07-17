@@ -32,8 +32,10 @@ public class PlayerMovement : MonoBehaviour
     private MeshRenderer MeshRenderer;
 
     public Animator animator;
+    public Animator playerAnimator;
     public Image Black;
-    
+
+    bool walking = false;
 
     void Start()
     {
@@ -42,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         FieldOfViewDetection.PlayerSpotted += Disable;
         boxCollider = GetComponent<BoxCollider>();
         MeshRenderer = GetComponent<MeshRenderer>();
+        //animator = GetComponent<Animator>();
     }
 
     IEnumerator Fading()
@@ -57,8 +60,20 @@ public class PlayerMovement : MonoBehaviour
         if (!disabled)
         {
             Time.timeScale = 1;
-           // animator.SetBool("walking", true);
+            
 
+            if (Input.GetKeyDown("w") || 
+                Input.GetKeyDown("a") || 
+                Input.GetKeyDown("s") || 
+                Input.GetKeyDown("d"))
+            {
+                playerAnimator.SetBool("walking", true);
+            }
+            else if (!Input.GetKeyDown("w"))
+            {
+                playerAnimator.SetBool("walking", false);
+
+            }
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
             movement = new Vector3(horizontal * moveSpeed * Time.deltaTime,

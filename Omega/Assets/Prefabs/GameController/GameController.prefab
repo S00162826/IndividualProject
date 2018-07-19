@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4746431942775078}
   - component: {fileID: 114429430593517008}
-  - component: {fileID: 114720041368770770}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -47,7 +46,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1828795499351266}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee5963718f2a76746a6369058de1ce87, type: 3}
   m_Name: 
@@ -55,14 +54,3 @@ MonoBehaviour:
   canvas: {fileID: 0}
   HealthCanvas: {fileID: 0}
   MiniMapCanvas: {fileID: 0}
---- !u!114 &114720041368770770
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1828795499351266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b6994d5a34cc9a49a199316431d40ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

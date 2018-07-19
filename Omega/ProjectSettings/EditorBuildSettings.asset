@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InGameScenes/Level1.unity
     guid: 93327fdc89b13e64493f2ffc1bd5234c
+  - enabled: 1
+    path: Assets/Scenes/Menus/OtherModes.unity
+    guid: 4c786ae5798728847935fdc1dce2c197

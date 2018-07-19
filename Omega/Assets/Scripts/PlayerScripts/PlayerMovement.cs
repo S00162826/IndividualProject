@@ -30,9 +30,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isCrawling = false;
     private bool cansStand = true;
     private MeshRenderer MeshRenderer;
+    //private SkinnedMeshRenderer SkinMeshRenderer;
 
     public Animator animator;
-    public Animator playerAnimator;
+    //public Animator playerAnimator;
     public Image Black;
 
     bool walking = false;
@@ -44,7 +45,8 @@ public class PlayerMovement : MonoBehaviour
         FieldOfViewDetection.PlayerSpotted += Disable;
         boxCollider = GetComponent<BoxCollider>();
         MeshRenderer = GetComponent<MeshRenderer>();
-        //animator = GetComponent<Animator>();
+        //SkinMeshRenderer = GetComponent<SkinnedMeshRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     IEnumerator Fading()
@@ -62,18 +64,18 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 1;
             
 
-            if (Input.GetKeyDown("w") || 
-                Input.GetKeyDown("a") || 
-                Input.GetKeyDown("s") || 
-                Input.GetKeyDown("d"))
-            {
-                playerAnimator.SetBool("walking", true);
-            }
-            else if (!Input.GetKeyDown("w"))
-            {
-                playerAnimator.SetBool("walking", false);
+            //if (Input.GetKeyDown("w") || 
+            //    Input.GetKeyDown("a") || 
+            //    Input.GetKeyDown("s") || 
+            //    Input.GetKeyDown("d"))
+            //{
+            //    playerAnimator.SetBool("walking", true);
+            //}
+            //else if (!Input.GetKeyDown("w"))
+            //{
+            //    playerAnimator.SetBool("walking", false);
 
-            }
+            //}
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
             movement = new Vector3(horizontal * moveSpeed * Time.deltaTime,
@@ -119,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown("c") && isCrawling == false)
         {
-
+            ///SkinMeshRenderer.enabled = false;
             isCrawling = true;
             boxCollider.size = new Vector3(1.0f, .3f, 1.0f);
             boxCollider.center = new Vector3(0f, -.3f, 0f);

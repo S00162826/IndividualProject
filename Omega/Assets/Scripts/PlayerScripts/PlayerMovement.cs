@@ -57,7 +57,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Vector3 movement = Vector3.zero;
         Time.timeScale = 0;
         if (!disabled)
         {
@@ -76,14 +75,17 @@ public class PlayerMovement : MonoBehaviour
             //    playerAnimator.SetBool("walking", false);
 
             //}
+
+           // Vector3 movement = Vector3.zero;
+
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
-            movement = new Vector3(horizontal * moveSpeed * Time.deltaTime,
-                                          0, vertical * moveSpeed * Time.deltaTime);
+            /*movement =*/ rb.AddForce(new Vector3(horizontal * moveSpeed * Time.deltaTime,
+                                          0, vertical * moveSpeed * Time.deltaTime));
 
-            moveVelocity = movement * moveSpeed;
+           // moveVelocity = movement * moveSpeed;
 
-            rb.MovePosition(transform.position + movement);
+            //rb.MovePosition(transform.position + movement);
 
             Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -124,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
             ///SkinMeshRenderer.enabled = false;
             isCrawling = true;
             boxCollider.size = new Vector3(1.0f, .3f, 1.0f);
-            boxCollider.center = new Vector3(0f, -.3f, 0f);
+            boxCollider.center = new Vector3(0f, -.34f, 0f);
             crawling.SetActive(true);
             gun.SetActive(false);
             moveSpeed = 1;

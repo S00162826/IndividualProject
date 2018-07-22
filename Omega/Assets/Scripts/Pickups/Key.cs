@@ -8,7 +8,7 @@ public class Key : MonoBehaviour
 
     public bool doesPlayerHaveKey;
 
-    public Text keyPickedUp;
+    //public Text keyPickedUp;
 
     void OnTriggerEnter(Collider other)
     {
@@ -16,8 +16,8 @@ public class Key : MonoBehaviour
         {
             doesPlayerHaveKey = true;
             Destroy(other.gameObject);
-            keyPickedUp.text = "Key Collected";
-            Destroy(keyPickedUp, 3f);        
+            //keyPickedUp.text = "Key Collected";
+            //Destroy(keyPickedUp, 3f);        
         }     
     }
 

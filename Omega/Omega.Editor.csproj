@@ -200,6 +200,7 @@
     <None Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
+    <None Include="Assets\Models\Key\readME keys.txt" />
     <None Include="Assets\ToonSoldiers_demo\ToonSoldiers_demo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

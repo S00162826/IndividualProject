@@ -7,14 +7,14 @@ public class PlayerMovement : MonoBehaviour
 {
     public event System.Action OnLevelComplete;
 
-    private float moveSpeed = 3;
+    private float moveSpeed = 5000;
     Rigidbody rb;
 
     private Vector3 moveVelocity;
 
     public Camera mainCamera;
-    public Camera fpsCamera;
-
+    //public Camera fpsCamera;
+    
     public GunController theGun;
 
     public Text addAmmo;
@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         mainCamera = /*FindObjectOfType<Camera>();*/ GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         FieldOfViewDetection.PlayerSpotted += Disable;
+        Pause.GameIsPaused += Disable;
         boxCollider = GetComponent<BoxCollider>();
         MeshRenderer = GetComponent<MeshRenderer>();
         //SkinMeshRenderer = GetComponent<SkinnedMeshRenderer>();
@@ -78,10 +79,15 @@ public class PlayerMovement : MonoBehaviour
 
            // Vector3 movement = Vector3.zero;
 
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
-            /*movement =*/ rb.AddForce(new Vector3(horizontal * moveSpeed * Time.deltaTime,
-                                          0, vertical * moveSpeed * Time.deltaTime));
+            //float horizontal = Input.GetAxis("Horizontal");
+            //float vertical = Input.GetAxis("Vertical");
+            ///*movement =*/ rb.AddForce(new Vector3(horizontal * moveSpeed * Time.deltaTime,
+            //                              0, vertical * moveSpeed * Time.deltaTime));
+            //if (Input.GetKey(KeyCode.D))
+            //{
+            //    rb.AddForce(Vector3.right * moveSpeed);
+            //}
+
 
            // moveVelocity = movement * moveSpeed;
 
@@ -129,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
             boxCollider.center = new Vector3(0f, -.34f, 0f);
             crawling.SetActive(true);
             gun.SetActive(false);
-            moveSpeed = 1;
+            moveSpeed = 2500;
             MeshRenderer.enabled = false;
           
         }
@@ -140,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
             boxCollider.center = new Vector3(0f, 0f, 0f);
             crawling.SetActive(false);
             gun.SetActive(true);
-            moveSpeed = 3;
+            moveSpeed = 5000;
             MeshRenderer.enabled = true;
 
         }
@@ -188,6 +194,10 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        rb.AddForce(new Vector3(horizontal * moveSpeed * Time.deltaTime,
+                       0, vertical * moveSpeed * Time.deltaTime));
         rb.velocity = moveVelocity;
     }
 

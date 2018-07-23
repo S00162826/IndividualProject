@@ -16,6 +16,7 @@ TagManager:
   - NoStandZone
   - StandZone
   - CrawlingCamera
+  - Collectable
   layers:
   - Default
   - TransparentFX

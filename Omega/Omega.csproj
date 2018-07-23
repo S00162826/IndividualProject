@@ -132,6 +132,7 @@
     <Compile Include="Assets\Scripts\EnemyScripts\HealthBarRotation.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\NPCPatrol.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\Waypoint.cs" />
+    <Compile Include="Assets\Scripts\Pickups\Collectable.cs" />
     <Compile Include="Assets\Scripts\Pickups\Key.cs" />
     <Compile Include="Assets\Scripts\Pickups\Rotator.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Damage.cs" />

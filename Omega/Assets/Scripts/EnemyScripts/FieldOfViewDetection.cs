@@ -78,6 +78,7 @@ public class FieldOfViewDetection : MonoBehaviour
         return false;
     }
 
+
     private void Update()
     {
         isInFOV = inFOV(transform, player, maxAngle, maxRadius);

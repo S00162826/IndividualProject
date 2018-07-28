@@ -17,6 +17,14 @@ TagManager:
   - StandZone
   - CrawlingCamera
   - Collectable
+  - KeyImage
+  - DoorLvl2
+  - DoorLvl3
+  - DoorLvl4
+  - KeyLvl2
+  - KeyLvl3
+  - KeyLvl4
+  - Gun
   layers:
   - Default
   - TransparentFX

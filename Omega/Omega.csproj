@@ -130,11 +130,13 @@
     <Compile Include="Assets\Scripts\EnemyScripts\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\FieldOfViewDetection.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\HealthBarRotation.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\Lasers.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\NPCPatrol.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\Waypoint.cs" />
     <Compile Include="Assets\Scripts\Pickups\Collectable.cs" />
     <Compile Include="Assets\Scripts\Pickups\Key.cs" />
     <Compile Include="Assets\Scripts\Pickups\Rotator.cs" />
+    <Compile Include="Assets\Scripts\Pickups\WeaponImage.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Damage.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Health.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />

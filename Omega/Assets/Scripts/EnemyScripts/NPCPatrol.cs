@@ -18,7 +18,7 @@ public class NPCPatrol : MonoBehaviour
 
     //Probability of changing direction
     [SerializeField]
-    float switchProbability = 0.2f;
+    float switchProbability/* = 0.2f*/;
 
     //List of waypoints
     [SerializeField]

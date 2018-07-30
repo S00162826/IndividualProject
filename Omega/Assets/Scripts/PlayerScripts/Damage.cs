@@ -11,6 +11,6 @@ public class Damage : MonoBehaviour {
     private void OnTriggerStay(Collider col)
     {
         if (col.tag == "Player")
-            col.SendMessage((isDamaging) ? "TakeDamage" : "HealDamage", /*Time.deltaTime **/ damage);
+            col.SendMessage((isDamaging) ? "TakeDamage" : "HealDamage", Time.deltaTime * damage,SendMessageOptions.RequireReceiver);
     }
 }

@@ -140,6 +140,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\Damage.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Health.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\WinLoseConditions.cs" />
     <Compile Include="Assets\Scripts\UI\ButtonManager.cs" />
     <Compile Include="Assets\Scripts\UI\MenuControl.cs" />

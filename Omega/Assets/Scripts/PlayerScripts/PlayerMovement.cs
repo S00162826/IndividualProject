@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     public event System.Action OnLevelComplete;
+    public event System.Action LaserContact;
 
     private float moveSpeed = 5000;
     Rigidbody rb;
@@ -59,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Time.timeScale = 0;
+        
         if (!disabled)
         {
             Time.timeScale = 1;
@@ -75,23 +77,7 @@ public class PlayerMovement : MonoBehaviour
             //{
             //    playerAnimator.SetBool("walking", false);
 
-            //}
-
-           // Vector3 movement = Vector3.zero;
-
-            //float horizontal = Input.GetAxis("Horizontal");
-            //float vertical = Input.GetAxis("Vertical");
-            ///*movement =*/ rb.AddForce(new Vector3(horizontal * moveSpeed * Time.deltaTime,
-            //                              0, vertical * moveSpeed * Time.deltaTime));
-            //if (Input.GetKey(KeyCode.D))
-            //{
-            //    rb.AddForce(Vector3.right * moveSpeed);
-            //}
-
-
-           // moveVelocity = movement * moveSpeed;
-
-            //rb.MovePosition(transform.position + movement);
+          
 
             Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -154,6 +140,16 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Laser")
+        {
+            Disable();
+            if (LaserContact != null)
+            {
+                LaserContact();
+            }
+
+        }
+
         if (other.gameObject.tag == "AmmoCrate")
         {
             theGun.ammo = theGun.ammo + ammoPickUp;
@@ -162,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(addAmmo, 5f);
         }
 
-        if (other.gameObject.tag == "Heal")
+        if (other.gameObject.tag == "Heal" && other.gameObject.tag != "FloorTrap")
         {
             Destroy(other.gameObject, mediPackTimer);
         }

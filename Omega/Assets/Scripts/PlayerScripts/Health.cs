@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+    public event System.Action NoHealth;
     public Image currentHealth;
 
     public float health = 100;
     public float maxHealth = 100;
-   
+
+    bool disabled;
 
     public Canvas GameOver;
 
@@ -17,6 +19,8 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        FieldOfViewDetection.PlayerSpotted += Disable;
+
         UpdateHealth();
     }
 
@@ -26,11 +30,23 @@ public class Health : MonoBehaviour
         currentHealth.rectTransform.localScale = new Vector3(ratio, 1, 1);
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         if (health < 0)
+        {
+            Destroy(gameObject);
             health = 0;
+            Disable();
+            if (NoHealth != null)
+            {
+                NoHealth();
+                Time.timeScale = 0;
+            }
+            else
+                Time.timeScale = 1;
+             
+        }
 
         UpdateHealth();
 
@@ -49,11 +65,15 @@ public class Health : MonoBehaviour
         {
             if (health <= 0)
             {
-                GameOver.gameObject.SetActive(true);
-                Time.timeScale = 0;
-            }
-
-        healthText.text = health.ToString() + "/" + maxHealth; 
+            
         }
-    
+
+        healthText.text = health.ToString("0") + "/" + maxHealth; 
+        }
+
+    private void Disable()
+    {
+        disabled = true;
+    }
+
 }

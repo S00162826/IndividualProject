@@ -25,6 +25,8 @@ TagManager:
   - KeyLvl3
   - KeyLvl4
   - Gun
+  - Laser
+  - FloorTrap
   layers:
   - Default
   - TransparentFX

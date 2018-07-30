@@ -14,6 +14,8 @@ public class WinLoseConditions : MonoBehaviour
     {
         FieldOfViewDetection.PlayerSpotted += GameOverDisplay;
         FindObjectOfType<PlayerMovement>().OnLevelComplete += LevelCompleteDisplay;
+        FindObjectOfType<PlayerMovement>().LaserContact += GameOverDisplay;
+        FindObjectOfType<Health>().NoHealth += GameOverDisplay;
     }
 
     public void GameOverDisplay()

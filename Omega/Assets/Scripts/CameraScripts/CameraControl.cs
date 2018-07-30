@@ -8,7 +8,7 @@ public class CameraControl : MonoBehaviour
     public Transform target;
 
     public float smoothSpeed = 0.125f;
-    private Vector3 offset = new Vector3(0f, 30f, -20f);
+    private Vector3 offset = new Vector3(0f, 60f, -20f);
 
     private bool standing = true;
 

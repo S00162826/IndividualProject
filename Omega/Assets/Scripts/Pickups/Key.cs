@@ -62,5 +62,10 @@ public class Key : MonoBehaviour
         {
             Destroy(col.gameObject);
         }
+
+        if (col.gameObject.tag == "DoorLvl4" && doesPlayerHaveLvl4Key == true)
+        {
+            Destroy(col.gameObject);
+        }
     }
 }

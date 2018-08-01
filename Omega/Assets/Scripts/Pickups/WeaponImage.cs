@@ -7,6 +7,7 @@ public class WeaponImage : MonoBehaviour {
 
     public Image gunPickedUp;
     public Text ammo;
+    public Transform pickUp;
 
     void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,7 @@ public class WeaponImage : MonoBehaviour {
         {
             gunPickedUp.gameObject.SetActive(true);
             ammo.gameObject.SetActive(true);
+            pickUp.gameObject.SetActive(false);
         }
     }
 

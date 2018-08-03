@@ -33,20 +33,20 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        if (health < 0)
+        if (health <= 0 && NoHealth != null)
         {
             Destroy(gameObject);
             health = 0;
             Disable();
-            if (NoHealth != null)
-            {
-                NoHealth();
-                Time.timeScale = 0;
-            }
-            else
-                Time.timeScale = 1;
-             
+            //if (NoHealth != null)
+            //{
+            NoHealth();
+            Time.timeScale = 0;
         }
+        else
+            Time.timeScale = 1;
+
+
 
         UpdateHealth();
 
@@ -61,19 +61,20 @@ public class Health : MonoBehaviour
         UpdateHealth();
     }
 
-        private void Update()
-        {
-            if (health <= 0)
-            {
-            
-        }
-
-        healthText.text = health.ToString("0") + "/" + maxHealth; 
-        }
-
-    private void Disable()
+    private void Update()
     {
-        disabled = true;
+        healthText.text = health.ToString("0") + "/" + maxHealth;
+        if (health <= 0 && NoHealth != null)
+        {
+            NoHealth();
+        }
+
+       
     }
+
+private void Disable()
+{
+    disabled = true;
+}
 
 }

@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1163607820882072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.608144, y: 1.5264559, z: -3.679}
+  m_LocalPosition: {x: 4, y: 2, z: 1}
   m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_Children: []
   m_Father: {fileID: 0}
@@ -135,4 +135,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDamaging: 1
-  damage: 15
+  damage: 1000

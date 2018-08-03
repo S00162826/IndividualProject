@@ -11,9 +11,9 @@ public class Key : MonoBehaviour
     public bool doesPlayerHaveLvl4Key;
 
     public Image keyPickedUp;
-    //public Image lvl2KeyPickedUp;
-    //public Image lvl3KeyPickedUp;
-    //public Image lvl4KeyPickedUp;
+    public Image lvl2KeyPickedUp;
+    public Image lvl3KeyPickedUp;
+    public Image lvl4KeyPickedUp;
 
     void OnTriggerEnter(Collider other)
     {
@@ -28,21 +28,21 @@ public class Key : MonoBehaviour
         {
             doesPlayerHaveLvl2Key = true;
             Destroy(other.gameObject);
-            //lvl2KeyPickedUp.gameObject.SetActive(true);
+            lvl2KeyPickedUp.gameObject.SetActive(true);
         }
 
         if (other.gameObject.tag == "KeyLvl3")
         {
             doesPlayerHaveLvl3Key = true;
             Destroy(other.gameObject);
-            //lvl3KeyPickedUp.gameObject.SetActive(true);
+            lvl3KeyPickedUp.gameObject.SetActive(true);
         }
 
         if (other.gameObject.tag == "KeyLvl4")
         {
             doesPlayerHaveLvl4Key = true;
             Destroy(other.gameObject);
-            //lvl3KeyPickedUp.gameObject.SetActive(true);
+            lvl4KeyPickedUp.gameObject.SetActive(true);
         }
     }
 

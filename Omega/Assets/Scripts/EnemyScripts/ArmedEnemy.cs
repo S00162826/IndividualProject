@@ -13,7 +13,6 @@ public class ArmedEnemy : MonoBehaviour
 
     public GameObject projectile;
     private Transform player;
-    public Transform enemy;
 
     void Start()
     {
@@ -23,8 +22,9 @@ public class ArmedEnemy : MonoBehaviour
 
     void Update()
     {
-        enemy.LookAt(player.position);
-        transform.LookAt(player.position);
+        Vector3 point = player.position;
+        point.y = 0.0f;
+        transform.LookAt(/*player.position*/point);
 
         if (Vector3.Distance(transform.position,player.position) > stoppingDistance)
         {

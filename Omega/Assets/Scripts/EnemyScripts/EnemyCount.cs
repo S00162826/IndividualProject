@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EnemyCount : MonoBehaviour
 {
     public Transform finish;
-
+    public Transform barrier;
     public Text enemyCount;
     public float totalEnemies;
 
@@ -19,6 +19,7 @@ public class EnemyCount : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             finish.gameObject.SetActive(true);
+            barrier.gameObject.SetActive(false);
         }
     }
 }

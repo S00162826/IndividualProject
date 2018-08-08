@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public Text addAmmo;
     public float ammoPickUp;
 
+    public bool canCrawl;
+
     public float mediPackTimer;
 
     bool disabled;
@@ -113,28 +115,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void Standing()
     {
-        if (Input.GetKeyDown("c") && isCrawling == false)
+        if (canCrawl == true)
         {
-            ///SkinMeshRenderer.enabled = false;
-            isCrawling = true;
-            boxCollider.size = new Vector3(1.0f, .3f, 1.0f);
-            boxCollider.center = new Vector3(0f, -.34f, 0f);
-            crawling.SetActive(true);
-            gun.SetActive(false);
-            moveSpeed = 2500;
-            MeshRenderer.enabled = false;
-          
-        }
-        else if (Input.GetKeyDown("c") && isCrawling == true)
-        {
-            isCrawling = false;
-            boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
-            boxCollider.center = new Vector3(0f, 0f, 0f);
-            crawling.SetActive(false);
-            gun.SetActive(true);
-            moveSpeed = 5000;
-            MeshRenderer.enabled = true;
+            if (Input.GetKeyDown("c") && isCrawling == false)
+            {
+                ///SkinMeshRenderer.enabled = false;
+                isCrawling = true;
+                boxCollider.size = new Vector3(1.0f, .3f, 1.0f);
+                boxCollider.center = new Vector3(0f, -.34f, 0f);
+                crawling.SetActive(true);
+                gun.SetActive(false);
+                moveSpeed = 2500;
+                MeshRenderer.enabled = false;
 
+            }
+            else if (Input.GetKeyDown("c") && isCrawling == true)
+            {
+                isCrawling = false;
+                boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
+                boxCollider.center = new Vector3(0f, 0f, 0f);
+                crawling.SetActive(false);
+                gun.SetActive(true);
+                moveSpeed = 5000;
+                MeshRenderer.enabled = true;
+
+            }
         }
     }
 

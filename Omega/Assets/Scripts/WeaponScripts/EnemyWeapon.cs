@@ -32,6 +32,11 @@ public class EnemyWeapon : MonoBehaviour
         {
             DestroyProjectile();
         }
+
+        if (other.gameObject.tag == "Wall")
+        {
+            DestroyProjectile();
+        }
     }
 
     void DestroyProjectile()

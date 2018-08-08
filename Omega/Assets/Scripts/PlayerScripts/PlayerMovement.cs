@@ -145,6 +145,11 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "EnableCrawling")
+        {
+            canCrawl = true;
+        }
+
         if (other.gameObject.tag == "Laser")
         {
             Disable();

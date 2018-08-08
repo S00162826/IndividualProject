@@ -27,6 +27,7 @@ TagManager:
   - Gun
   - Laser
   - FloorTrap
+  - EnableCrawling
   layers:
   - Default
   - TransparentFX

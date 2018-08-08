@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EasyGrassSubstance\Example Scene\ObjectRotation.cs" />
     <Compile Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -152,6 +153,8 @@
     <Compile Include="Assets\Scripts\WeaponScripts\GunController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\BuildingShed\BuildingShedInfo.txt" />
+    <None Include="Assets\EasyGrassSubstance\Documentation.txt" />
     <None Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
     <None Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
     <None Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />

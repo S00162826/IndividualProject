@@ -28,6 +28,8 @@ TagManager:
   - Laser
   - FloorTrap
   - EnableCrawling
+  - TheEnd
+  - FinalWall
   layers:
   - Default
   - TransparentFX

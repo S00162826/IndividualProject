@@ -19,6 +19,12 @@ public class BulletController : MonoBehaviour
         {
             DestroyProjectile();
         }
+        if (other.gameObject.tag == "FinalWall")
+        {
+            Destroy(other.gameObject);
+            DestroyProjectile();
+
+        }
     }
 
     void DestroyProjectile()

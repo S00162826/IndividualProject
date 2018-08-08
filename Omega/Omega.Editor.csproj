@@ -157,10 +157,12 @@
     <Compile Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Editor\Utils\EditorResources.cs" />
     <Compile Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Editor\Utils\FxStyles.cs" />
     <Compile Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Editor\Utils\ReflectionUtils.cs" />
+    <Compile Include="Assets\LowPolyWater_Pack\Scripts\Editor\GeneratePlane.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\BuildingShed\BuildingShedInfo.txt" />
     <None Include="Assets\EasyGrassSubstance\Documentation.txt" />
+    <None Include="Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
     <None Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
     <None Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
     <None Include="Assets\LowpolyDungeonAssets\Demo Scene\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />

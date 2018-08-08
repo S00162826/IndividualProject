@@ -5,18 +5,39 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/TestScenes/TestScene1.unity
+    guid: 9da8ceb28ef793e4abb6344f090c2446
+  - enabled: 0
+    path: Assets/Scenes/Menus/OtherModes.unity
+    guid: 4c786ae5798728847935fdc1dce2c197
   - enabled: 1
     path: Assets/Scenes/Menus/TitleScreen.unity
     guid: 785ef6e77d0b4234caba099e67132147
   - enabled: 1
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: 523e6e286ec10e14898a4e6b408f6c3a
-  - enabled: 0
-    path: Assets/Scenes/TestScenes/TestScene1.unity
-    guid: 9da8ceb28ef793e4abb6344f090c2446
   - enabled: 1
     path: Assets/Scenes/InGameScenes/Level1.unity
     guid: 93327fdc89b13e64493f2ffc1bd5234c
   - enabled: 1
-    path: Assets/Scenes/Menus/OtherModes.unity
-    guid: 4c786ae5798728847935fdc1dce2c197
+    path: Assets/Scenes/InGameScenes/Level2.unity
+    guid: e6bbb656ee35d1942accb1b61ff9c80a
+  - enabled: 1
+    path: Assets/Scenes/InGameScenes/Level3.unity
+    guid: 39859358b74d411439b49fbae5dc14b7
+  - enabled: 1
+    path: Assets/Scenes/InGameScenes/Level4.unity
+    guid: 236adafa28b56424ebcb5f63cfd30e4d
+  - enabled: 1
+    path: Assets/Scenes/InGameScenes/Level5.unity
+    guid: c3f170510f148a94ab6422c575f45f1d
+  - enabled: 1
+    path: Assets/Scenes/InGameScenes/Level6.unity
+    guid: af0aff57b5810e74d832d72eda918ccb
+  - enabled: 1
+    path: Assets/Scenes/InGameScenes/Level7.unity
+    guid: 41f78a8b5df8b6d478bdf3d8d8ca7068
+  - enabled: 1
+    path: Assets/Scenes/Menus/EndGame.unity
+    guid: 395a07f8d2f352a419035fbcca757d1f

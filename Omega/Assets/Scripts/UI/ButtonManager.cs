@@ -14,24 +14,28 @@ public class ButtonManager : MonoBehaviour
     public Animator anim;
 
 
-    public void NewGameBtn(/*string newGameLevel*/)
+    public void NewGameBtn()
     {
-        StartCoroutine(Fading());
-        //SceneManager.LoadScene(newGameLevel);
+        
+        
         //if (Time.timeScale == 0)
         //{
-           
+
         //    Time.timeScale = 1;
+            StartCoroutine(Fading());
         //}
+        //SceneManager.LoadScene(newGameLevel);
     }
 
-    public void Restart(int level)
+    public void Restart()
     {
-        SceneManager.LoadScene(level);
-        if (Time.timeScale == 0)
-        {
-            Time.timeScale = 1;
-        }
+        
+        StartCoroutine(Fading());
+        //SceneManager.LoadScene(level);
+        //if (Time.timeScale == 0)
+        //{
+        //    Time.timeScale = 1;
+        //}
 
     }
 

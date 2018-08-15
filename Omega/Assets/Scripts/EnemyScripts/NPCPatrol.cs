@@ -7,7 +7,7 @@ public class NPCPatrol : MonoBehaviour
 {
     public bool patrolling;
 
-    Animator animator;
+    static Animator anim;
     //Whether the agent waits on each node.
     [SerializeField]
     bool patrolWaiting;
@@ -34,7 +34,7 @@ public class NPCPatrol : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         navMeshAgent = this.GetComponent<NavMeshAgent>();
 
         if (patrolling == true)
@@ -64,9 +64,18 @@ public class NPCPatrol : MonoBehaviour
     {
         if (patrolling == true)
         {
+            if (travelling)
+            {
+                anim.SetBool("IsWalking", true);
+            }
+            else
+            {
+                anim.SetBool("IsWalking", false);
+            }
             //Check if close to destination
             if (travelling && navMeshAgent.remainingDistance <= 1.0f)
             {
+                //anim.SetBool("IsWalking", true);
                 travelling = false;
 
                 //If going to wait, then wait
@@ -77,15 +86,18 @@ public class NPCPatrol : MonoBehaviour
                 }
                 else
                 {
-                    
+
                     ChangePatrolPoint();
                     SetDestination();
                 }
+            
+           
             }
 
             //If waiting
             if (waiting)
             {
+                //anim.SetBool("IsWalking", false);
                 waitTimer += Time.deltaTime;
                 if (waitTimer >= totalWaitTime)
                 {
@@ -124,7 +136,7 @@ public class NPCPatrol : MonoBehaviour
             if (patrolForward)
             {
                 currentPatrolIndex++;
-                animator.SetBool("walking", true);
+               // anim.SetBool("IsWalking", true);
                 if (currentPatrolIndex >= patrolPoints.Count)
                 {
                     currentPatrolIndex = 0;
@@ -133,6 +145,7 @@ public class NPCPatrol : MonoBehaviour
 
             else
             {
+                //anim.SetBool("IsWalking", false);
                 currentPatrolIndex--;
 
                 if (currentPatrolIndex < 0)

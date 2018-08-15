@@ -458,7 +458,7 @@ MonoBehaviour:
   stoppingDistance: 0
   retreatDistance: 0
   startTimeBetweenShots: 2
-  projectile: {fileID: 1163607820882072, guid: ffa355b572a0c854ab897e0eaf6a41ad, type: 2}
+  projectile: {fileID: 1212887104779994, guid: f472d8a18317d334dbaeddc1c9886b7c, type: 2}
 --- !u!23 &36109449
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3755,7 +3755,7 @@ MonoBehaviour:
   stoppingDistance: 0
   retreatDistance: 0
   startTimeBetweenShots: 2
-  projectile: {fileID: 1163607820882072, guid: ffa355b572a0c854ab897e0eaf6a41ad, type: 2}
+  projectile: {fileID: 1212887104779994, guid: f472d8a18317d334dbaeddc1c9886b7c, type: 2}
 --- !u!23 &540838727
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4891,7 +4891,7 @@ MonoBehaviour:
   stoppingDistance: 0
   retreatDistance: 0
   startTimeBetweenShots: 1
-  projectile: {fileID: 1163607820882072, guid: ffa355b572a0c854ab897e0eaf6a41ad, type: 2}
+  projectile: {fileID: 1212887104779994, guid: f472d8a18317d334dbaeddc1c9886b7c, type: 2}
 --- !u!23 &726743171
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7587,7 +7587,7 @@ MonoBehaviour:
   stoppingDistance: 0
   retreatDistance: 0
   startTimeBetweenShots: 1
-  projectile: {fileID: 1163607820882072, guid: ffa355b572a0c854ab897e0eaf6a41ad, type: 2}
+  projectile: {fileID: 1212887104779994, guid: f472d8a18317d334dbaeddc1c9886b7c, type: 2}
 --- !u!23 &1135979960
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9320,7 +9320,7 @@ MonoBehaviour:
   stoppingDistance: 0
   retreatDistance: 0
   startTimeBetweenShots: 1
-  projectile: {fileID: 1163607820882072, guid: ffa355b572a0c854ab897e0eaf6a41ad, type: 2}
+  projectile: {fileID: 1212887104779994, guid: f472d8a18317d334dbaeddc1c9886b7c, type: 2}
 --- !u!23 &1400113979
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9906,7 +9906,7 @@ MonoBehaviour:
   stoppingDistance: 0
   retreatDistance: 0
   startTimeBetweenShots: 1
-  projectile: {fileID: 1163607820882072, guid: ffa355b572a0c854ab897e0eaf6a41ad, type: 2}
+  projectile: {fileID: 1212887104779994, guid: f472d8a18317d334dbaeddc1c9886b7c, type: 2}
 --- !u!23 &1465785467
 MeshRenderer:
   m_ObjectHideFlags: 0

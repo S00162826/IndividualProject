@@ -7,7 +7,7 @@ public class NPCPatrol : MonoBehaviour
 {
     public bool patrolling;
 
-    static Animator anim;
+    private Animator anim;
     //Whether the agent waits on each node.
     [SerializeField]
     bool patrolWaiting;

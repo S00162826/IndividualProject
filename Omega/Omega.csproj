@@ -130,6 +130,7 @@
     <Compile Include="Assets\Scripts\CameraScripts\MiniCamControl.cs" />
     <Compile Include="Assets\Scripts\CameraScripts\SewerCam.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\ArmedEnemy.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\ArmedEnemyWalking.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\EnemyCount.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\FieldOfViewDetection.cs" />

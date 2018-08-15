@@ -14,8 +14,11 @@ public class ArmedEnemy : MonoBehaviour
     public GameObject projectile;
     private Transform player;
 
+    //private Animator anim;
+
     void Start()
     {
+       // anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         timeBetweenShots = startTimeBetweenShots;
     }
@@ -28,6 +31,7 @@ public class ArmedEnemy : MonoBehaviour
 
         if (Vector3.Distance(transform.position,player.position) > stoppingDistance)
         {
+            //anim.SetBool("IsWalking", true);
             transform.position = Vector3.MoveTowards(transform.position,
                                                      player.position,
                                                      speed * Time.deltaTime);
@@ -36,6 +40,7 @@ public class ArmedEnemy : MonoBehaviour
         else if (Vector3.Distance(transform.position, player.position) < stoppingDistance && 
                  Vector3.Distance(transform.position, player.position) > retreatDistance)
         {
+            //anim.SetBool("IsWalking", false);
             transform.position = this.transform.position;
         }
         else if (Vector3.Distance(transform.position, player.position) < retreatDistance)
@@ -43,7 +48,9 @@ public class ArmedEnemy : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position,
                                                      player.position,
                                                      -speed * Time.deltaTime);
+            //anim.SetBool("IsWalking", true);
         }
+       
 
         if (timeBetweenShots <= 0)
         {

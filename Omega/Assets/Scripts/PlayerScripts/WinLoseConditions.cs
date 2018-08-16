@@ -31,6 +31,6 @@ public class WinLoseConditions : MonoBehaviour
     {
         WinCanvas.gameObject.SetActive(true);
         gameIsOver = true;
-        FieldOfViewDetection.PlayerSpotted -= GameOverDisplay;
+        //FieldOfViewDetection.PlayerSpotted -= GameOverDisplay;
     }
 }

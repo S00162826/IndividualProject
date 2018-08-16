@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public event System.Action OnLevelComplete;
     public event System.Action LaserContact;
 
+    bool disablePlayer = false;
+
     private float moveSpeed = 5000;
     Rigidbody rb;
 
@@ -61,13 +63,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Time.timeScale = 0;
-        
+        //Time.timeScale = 0;
+
         if (!disabled)
         {
             Time.timeScale = 1;
-            
-
+            //disablePlayer = false;
+            if (cansStand == true)
+                Standing();
             //if (Input.GetKeyDown("w") || 
             //    Input.GetKeyDown("a") || 
             //    Input.GetKeyDown("s") || 
@@ -79,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             //{
             //    playerAnimator.SetBool("walking", false);
 
-          
+
 
             Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -99,12 +102,11 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
                 theGun.isFiring = false;
-
-            //
-            if(cansStand == true)
-            Standing();
-
         }
+        
+            
+        
+        
 
     }
 
@@ -115,33 +117,36 @@ public class PlayerMovement : MonoBehaviour
 
     private void Standing()
     {
-        if (canCrawl == true)
-        {
-            if (Input.GetKeyDown("c") && isCrawling == false)
+        
+            if (canCrawl == true)
             {
-                ///SkinMeshRenderer.enabled = false;
-                isCrawling = true;
-                boxCollider.size = new Vector3(1.0f, .3f, 1.0f);
-                boxCollider.center = new Vector3(0f, -.34f, 0f);
-                crawling.SetActive(true);
-                gun.SetActive(false);
-                moveSpeed = 2500;
-                MeshRenderer.enabled = false;
+                if (Input.GetKeyDown("c") && isCrawling == false)
+                {
+                    ///SkinMeshRenderer.enabled = false;
+                    isCrawling = true;
+                    boxCollider.size = new Vector3(1.0f, .3f, 1.0f);
+                    boxCollider.center = new Vector3(0f, -.34f, 0f);
+                    crawling.SetActive(true);
+                    gun.SetActive(false);
+                    moveSpeed = 2500;
+                    MeshRenderer.enabled = false;
 
-            }
-            else if (Input.GetKeyDown("c") && isCrawling == true)
-            {
-                isCrawling = false;
-                boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
-                boxCollider.center = new Vector3(0f, 0f, 0f);
-                crawling.SetActive(false);
-                gun.SetActive(true);
-                moveSpeed = 5000;
-                MeshRenderer.enabled = true;
+                }
+                else if (Input.GetKeyDown("c") && isCrawling == true)
+                {
+                    isCrawling = false;
+                    boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
+                    boxCollider.center = new Vector3(0f, 0f, 0f);
+                    crawling.SetActive(false);
+                    gun.SetActive(true);
+                    moveSpeed = 5000;
+                    MeshRenderer.enabled = true;
+
+                }
 
             }
         }
-    }
+    
 
     void OnTriggerEnter(Collider other)
     {
@@ -187,11 +192,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.tag == "Finish")
         {
-            StartCoroutine(Fading());
+            //StartCoroutine(Fading());
             Disable();
             if (OnLevelComplete != null)
             {
                 OnLevelComplete();
+                disablePlayer = true;
+
             }
         }
     }
@@ -200,11 +207,16 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        rb.AddForce(new Vector3(horizontal * moveSpeed * Time.deltaTime,
-                       0, vertical * moveSpeed * Time.deltaTime));
-        rb.velocity = moveVelocity;
+        //disablePlayer = false;
+
+        if (disablePlayer == false)
+        {
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            rb.AddForce(new Vector3(horizontal * moveSpeed * Time.deltaTime,
+                           0, vertical * moveSpeed * Time.deltaTime));
+            rb.velocity = moveVelocity;
+        }
     }
 
     private void OnDestroy()

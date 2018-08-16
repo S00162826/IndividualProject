@@ -3,6 +3,7 @@
 public class Pause : MonoBehaviour
 {
     public static event System.Action GameIsPaused;
+    public static event System.Action GameIsUnPaused;
     public Transform canvas;
     public Transform HealthCanvas;
     public Transform MiniMapCanvas;
@@ -13,15 +14,24 @@ public class Pause : MonoBehaviour
 
     public void Update()
     {
-        if  (GameIsPaused != null) { 
+        if (GameIsPaused != null)
+        {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Paused();
-                GameIsPaused();
+               // GameIsPaused();
             }
         }
-        //else (GameIsPaused != null);
-
+        //else 
+        //    if (Input.GetKeyDown(KeyCode.Escape))
+        //    {
+        //        //Paused();
+        //        GameIsUnPaused();
+        //    }
+        
+        
+       
+        
 
 
     }
@@ -48,7 +58,7 @@ public class Pause : MonoBehaviour
             weaponCanvas.gameObject.SetActive(true);
             Time.timeScale = 1;
             AudioListener.volume = 1;
-            GameIsPaused = null;
+            GameIsUnPaused();
         }
     }
 

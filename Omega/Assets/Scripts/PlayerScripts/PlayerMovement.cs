@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         mainCamera = /*FindObjectOfType<Camera>();*/ GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         FieldOfViewDetection.PlayerSpotted += Disable;
         Pause.GameIsPaused += Disable;
+        Pause.GameIsUnPaused += RemoveDisabling;
         boxCollider = GetComponent<BoxCollider>();
         MeshRenderer = GetComponent<MeshRenderer>();
         //SkinMeshRenderer = GetComponent<SkinnedMeshRenderer>();
@@ -113,6 +114,11 @@ public class PlayerMovement : MonoBehaviour
     private void Disable()
     {
         disabled = true;
+    }
+
+    private void RemoveDisabling()
+    {
+        disabled = false;
     }
 
     private void Standing()

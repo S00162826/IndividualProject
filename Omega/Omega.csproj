@@ -147,10 +147,12 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\WinLoseConditions.cs" />
-    <Compile Include="Assets\Scripts\UI\ButtonManager.cs" />
+    <Compile Include="Assets\Scripts\UI\ExitToMainMenu.cs" />
     <Compile Include="Assets\Scripts\UI\FinalSceneLoader.cs" />
     <Compile Include="Assets\Scripts\UI\MenuControl.cs" />
+    <Compile Include="Assets\Scripts\UI\NextLevel.cs" />
     <Compile Include="Assets\Scripts\UI\Pause.cs" />
+    <Compile Include="Assets\Scripts\UI\ReplayLevel.cs" />
     <Compile Include="Assets\Scripts\WeaponScripts\Ammo.cs" />
     <Compile Include="Assets\Scripts\WeaponScripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\WeaponScripts\EnemyWeapon.cs" />

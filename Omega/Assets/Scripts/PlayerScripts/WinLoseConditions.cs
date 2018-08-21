@@ -30,7 +30,7 @@ public class WinLoseConditions : MonoBehaviour
         gameIsOver = true;
         FieldOfViewDetection.PlayerSpotted -= GameOverDisplay;
         FindObjectOfType<PlayerMovement>().OnLevelComplete -= LevelCompleteDisplay;
-        Time.timeScale = 0;
+        Time.timeScale = 0.1f;
     }
 
     public void LevelCompleteDisplay()

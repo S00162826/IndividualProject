@@ -30,6 +30,7 @@ TagManager:
   - EnableCrawling
   - TheEnd
   - FinalWall
+  - CollectableCollider
   layers:
   - Default
   - TransparentFX

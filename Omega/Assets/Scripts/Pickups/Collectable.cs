@@ -9,9 +9,9 @@ public class Collectable : MonoBehaviour
     public float collectablesFound;
     public Text collectables;
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Collectable")
+        if (other.gameObject.tag == "Collectable" && gameObject.tag == "CollectableCollider")
         {
             collectablesFound += 1;
             other.gameObject.SetActive(false);

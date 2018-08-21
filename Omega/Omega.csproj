@@ -142,12 +142,15 @@
     <Compile Include="Assets\Scripts\Pickups\Key.cs" />
     <Compile Include="Assets\Scripts\Pickups\Rotator.cs" />
     <Compile Include="Assets\Scripts\Pickups\WeaponImage.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\AddComponent.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Damage.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Health.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerTrigger.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\RemoveComponent.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\WinLoseConditions.cs" />
     <Compile Include="Assets\Scripts\UI\ExitToMainMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\FinalPause.cs" />
     <Compile Include="Assets\Scripts\UI\FinalSceneLoader.cs" />
     <Compile Include="Assets\Scripts\UI\MenuControl.cs" />
     <Compile Include="Assets\Scripts\UI\NextLevel.cs" />

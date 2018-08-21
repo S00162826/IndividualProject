@@ -6,6 +6,7 @@ public class FieldOfViewDetection : MonoBehaviour
 {
     public static event System.Action PlayerSpotted;
     public Transform player;
+    public GameObject playerObject;
     public float maxAngle;
     public float maxRadius;
 
@@ -84,6 +85,7 @@ public class FieldOfViewDetection : MonoBehaviour
         isInFOV = inFOV(transform, player, maxAngle, maxRadius);
         if (isInFOV == true)
         {
+            
             playerCaughtTimer += Time.deltaTime;
         }
         else

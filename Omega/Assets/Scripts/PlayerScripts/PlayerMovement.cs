@@ -30,15 +30,15 @@ public class PlayerMovement : MonoBehaviour
     bool disabled;
 
     private BoxCollider boxCollider;
-    public GameObject crawling;
+   // public GameObject crawling;
     public GameObject gun;
     private bool isCrawling = false;
-    private bool cansStand = true;
+    public bool cansStand = true;
     private MeshRenderer MeshRenderer;
-    //private SkinnedMeshRenderer SkinMeshRenderer;
+    private SkinnedMeshRenderer SkinMeshRenderer;
 
     public Animator animator;
-    //public Animator playerAnimator;
+    public Animator playerAnimator;
     public Image Black;
 
     bool walking = false;
@@ -49,11 +49,15 @@ public class PlayerMovement : MonoBehaviour
         mainCamera = /*FindObjectOfType<Camera>();*/ GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         FieldOfViewDetection.PlayerSpotted += Disable;
         Pause.GameIsPaused += Disable;
+        FinalPause.GameIsPaused += Disable;
         Pause.GameIsUnPaused += RemoveDisabling;
+        FinalPause.GameIsUnPaused += RemoveDisabling;
         boxCollider = GetComponent<BoxCollider>();
         MeshRenderer = GetComponent<MeshRenderer>();
-        //SkinMeshRenderer = GetComponent<SkinnedMeshRenderer>();
+        SkinMeshRenderer = GetComponent<SkinnedMeshRenderer>();
         animator = GetComponent<Animator>();
+        playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        //playerAnimator.SetBool("IsWalking", false);
     }
 
     IEnumerator Fading()
@@ -65,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Time.timeScale = 0;
+        
 
         if (!disabled)
         {
@@ -72,17 +77,20 @@ public class PlayerMovement : MonoBehaviour
             //disablePlayer = false;
             if (cansStand == true)
                 Standing();
-            //if (Input.GetKeyDown("w") || 
-            //    Input.GetKeyDown("a") || 
-            //    Input.GetKeyDown("s") || 
-            //    Input.GetKeyDown("d"))
-            //{
-            //    playerAnimator.SetBool("walking", true);
-            //}
-            //else if (!Input.GetKeyDown("w"))
-            //{
-            //    playerAnimator.SetBool("walking", false);
+            if (Input.GetKey("w") ||
+                Input.GetKey("a") ||
+                Input.GetKey("s") ||
+                Input.GetKey("d"))
+            {
+                playerAnimator.SetBool("IsWalking", true);
+            }
+            else
+            {
+                playerAnimator.SetBool("IsWalking", false);
 
+            }
+
+            
 
 
             Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -104,20 +112,18 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
                 theGun.isFiring = false;
         }
-        
-            
-        
-        
-
     }
 
     private void Disable()
     {
+        disablePlayer = true;
         disabled = true;
     }
 
     private void RemoveDisabling()
     {
+        disablePlayer = false;
+
         disabled = false;
     }
 
@@ -128,29 +134,34 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (Input.GetKeyDown("c") && isCrawling == false)
                 {
-                    ///SkinMeshRenderer.enabled = false;
+                    SkinMeshRenderer.enabled = false;
                     isCrawling = true;
-                    boxCollider.size = new Vector3(1.0f, .3f, 1.0f);
-                    boxCollider.center = new Vector3(0f, -.34f, 0f);
-                    crawling.SetActive(true);
+                boxCollider.enabled = false;
+                //boxCollider.size = new Vector3(1.0f, .3f, 1.0f);
+                boxCollider.size = new Vector3(18.7f, 27.49f, 34.8f);
+               boxCollider.center = new Vector3(1.0f, 12.94f, 1.0f);            
+                //boxCollider.center = new Vector3(0f, -.34f, 0f);            
+               // crawling.SetActive(true);
                     gun.SetActive(false);
                     moveSpeed = 2500;
-                    MeshRenderer.enabled = false;
+                   // MeshRenderer.enabled = false;
 
                 }
                 else if (Input.GetKeyDown("c") && isCrawling == true)
                 {
                     isCrawling = false;
-                    boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
-                    boxCollider.center = new Vector3(0f, 0f, 0f);
-                    crawling.SetActive(false);
+                //boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
+                //boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
+                boxCollider.size = new Vector3(19.6f, 85.7f, 1.0f);
+                boxCollider.center = new Vector3(1.0f, 44.8f, 1.0f);
+               // crawling.SetActive(false);
                     gun.SetActive(true);
                     moveSpeed = 5000;
-                    MeshRenderer.enabled = true;
-
-                }
-
+                  //  MeshRenderer.enabled = true;
+                    SkinMeshRenderer.enabled = true;
             }
+
+        }
         }
     
 
@@ -187,13 +198,13 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.tag == "NoStandZone")
         {
             cansStand = false;
-
+            boxCollider.enabled = false;
         }
 
         if (other.gameObject.tag == "StandZone")
         {
             cansStand = true;
-
+            boxCollider.enabled = true;
         }
 
         if (other.tag == "Finish")
@@ -204,6 +215,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 OnLevelComplete();
                 disablePlayer = true;
+                isCrawling = false;
+                
 
             }
         }
@@ -217,12 +230,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (disablePlayer == false)
         {
+           // playerAnimator.SetBool("IsWalking", true);
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
             rb.AddForce(new Vector3(horizontal * moveSpeed * Time.deltaTime,
                            0, vertical * moveSpeed * Time.deltaTime));
             rb.velocity = moveVelocity;
         }
+        
     }
 
     private void OnDestroy()

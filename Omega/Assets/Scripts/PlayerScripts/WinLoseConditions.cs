@@ -13,6 +13,7 @@ public class WinLoseConditions : MonoBehaviour
     public Transform HealthCanvas;
     public Transform WeaponCanvas;
     public Transform ItemCanvas;
+    public Canvas PauseCanvas;
 
     bool gameIsOver;
 
@@ -27,6 +28,7 @@ public class WinLoseConditions : MonoBehaviour
     public void GameOverDisplay()
     {
         LoseCanvas.gameObject.SetActive(true);
+        Destroy(PauseCanvas);
         gameIsOver = true;
         FieldOfViewDetection.PlayerSpotted -= GameOverDisplay;
         FindObjectOfType<PlayerMovement>().OnLevelComplete -= LevelCompleteDisplay;
@@ -35,6 +37,7 @@ public class WinLoseConditions : MonoBehaviour
 
     public void LevelCompleteDisplay()
     {
+        Destroy(PauseCanvas);
         WinCanvas.gameObject.SetActive(true);
         MinimapCanvas.gameObject.SetActive(false);
         HealthCanvas.gameObject.SetActive(false);

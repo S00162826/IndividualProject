@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool disablePlayer = false;
 
-    private float moveSpeed = 5000;
+    public float moveSpeed = 5000;
     Rigidbody rb;
 
     private Vector3 moveVelocity;
@@ -69,14 +69,16 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Time.timeScale = 0;
-        
+
 
         if (!disabled)
         {
             Time.timeScale = 1;
             //disablePlayer = false;
             if (cansStand == true)
+            {
                 Standing();
+            }
             if (Input.GetKey("w") ||
                 Input.GetKey("a") ||
                 Input.GetKey("s") ||
@@ -90,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
             }
 
-            
+
 
 
             Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);

@@ -5,48 +5,46 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //This is so the win lose condition script know when to
+    //activate certain methods
     public event System.Action OnLevelComplete;
     public event System.Action LaserContact;
 
+    //Movement variables
+    bool disabled;
     bool disablePlayer = false;
-
     public float moveSpeed = 5000;
+    private Vector3 moveVelocity;
     Rigidbody rb;
 
-    private Vector3 moveVelocity;
-
-    public Camera mainCamera;
-    //public Camera fpsCamera;
-    
+    //To access objects
+    public Camera mainCamera;   
     public GunController theGun;
-
-    public Text addAmmo;
-    public float ammoPickUp;
-
-    public bool canCrawl;
-
-    public float mediPackTimer;
-
-    bool disabled;
-
     private BoxCollider boxCollider;
-   // public GameObject crawling;
     public GameObject gun;
-    private bool isCrawling = false;
-    public bool cansStand = true;
     private MeshRenderer MeshRenderer;
     private SkinnedMeshRenderer SkinMeshRenderer;
-
     public Animator animator;
-    public Animator playerAnimator;
+    private Animator playerAnimator;
     public Image Black;
 
-    bool walking = false;
+    //Ammo is in interaction with player
+    //Text for display, float for how much
+    public Text addAmmo;
+    public float ammoPickUp;
+    
+    public float mediPackTimer;
+
+    //To access audio objects
+    AudioSource heal;
+    AudioSource burning;
+    AudioSource ammo;
 
     void Start()
     {
+        //Finds the objects I want to assign to the variables
         rb = GetComponent<Rigidbody>();
-        mainCamera = /*FindObjectOfType<Camera>();*/ GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         FieldOfViewDetection.PlayerSpotted += Disable;
         Pause.GameIsPaused += Disable;
         FinalPause.GameIsPaused += Disable;
@@ -57,7 +55,9 @@ public class PlayerMovement : MonoBehaviour
         SkinMeshRenderer = GetComponent<SkinnedMeshRenderer>();
         animator = GetComponent<Animator>();
         playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-        //playerAnimator.SetBool("IsWalking", false);
+        heal = GameObject.FindGameObjectWithTag("HealthSFX").GetComponent<AudioSource>();
+        burning = GameObject.FindGameObjectWithTag("BurningSFX").GetComponent<AudioSource>();
+        ammo = GameObject.FindGameObjectWithTag("GunSFX").GetComponent<AudioSource>();
     }
 
     IEnumerator Fading()
@@ -68,33 +68,33 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //Time.timeScale = 0;
-
-
+        //Player can only move if disabled is false
+        //This lets me pick time when I want the player 
+        //to be uncontrollable e.g. when player dies
         if (!disabled)
         {
             Time.timeScale = 1;
-            //disablePlayer = false;
-            if (cansStand == true)
-            {
-                Standing();
-            }
+
+            //Setting keys to set off animations
+            //Simply use the same keys that move the player
             if (Input.GetKey("w") ||
                 Input.GetKey("a") ||
                 Input.GetKey("s") ||
-                Input.GetKey("d"))
+                Input.GetKey("d") ||
+                Input.GetKey("up") ||
+                Input.GetKey("down") ||
+                Input.GetKey("left") ||
+                Input.GetKey("right")) 
             {
                 playerAnimator.SetBool("IsWalking", true);
             }
             else
             {
                 playerAnimator.SetBool("IsWalking", false);
-
             }
 
 
-
-
+            //Determines where the player will face using camera and mouse positions
             Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
             float rayLength;
@@ -106,6 +106,9 @@ public class PlayerMovement : MonoBehaviour
                 transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
             }
 
+            //Gun only shoots when isFiring is true
+            //Only true when left click on mouse and has more
+            //than 0 bullets
             if (Input.GetMouseButtonDown(0) && theGun.ammo > 0)
             {
                 theGun.isFiring = true;
@@ -125,55 +128,13 @@ public class PlayerMovement : MonoBehaviour
     private void RemoveDisabling()
     {
         disablePlayer = false;
-
         disabled = false;
     }
 
-    private void Standing()
-    {
-        
-            if (canCrawl == true)
-            {
-                if (Input.GetKeyDown("c") && isCrawling == false)
-                {
-                    SkinMeshRenderer.enabled = false;
-                    isCrawling = true;
-                boxCollider.enabled = false;
-                //boxCollider.size = new Vector3(1.0f, .3f, 1.0f);
-                boxCollider.size = new Vector3(18.7f, 27.49f, 34.8f);
-               boxCollider.center = new Vector3(1.0f, 12.94f, 1.0f);            
-                //boxCollider.center = new Vector3(0f, -.34f, 0f);            
-               // crawling.SetActive(true);
-                    gun.SetActive(false);
-                    moveSpeed = 2500;
-                   // MeshRenderer.enabled = false;
-
-                }
-                else if (Input.GetKeyDown("c") && isCrawling == true)
-                {
-                    isCrawling = false;
-                //boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
-                //boxCollider.size = new Vector3(1.0f, 1.0f, 1.0f);
-                boxCollider.size = new Vector3(19.6f, 85.7f, 1.0f);
-                boxCollider.center = new Vector3(1.0f, 44.8f, 1.0f);
-               // crawling.SetActive(false);
-                    gun.SetActive(true);
-                    moveSpeed = 5000;
-                  //  MeshRenderer.enabled = true;
-                    SkinMeshRenderer.enabled = true;
-            }
-
-        }
-        }
-    
-
+    //All the trigger interactions
+    //Determine what happen when the player enters these triggers
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "EnableCrawling")
-        {
-            canCrawl = true;
-        }
-
         if (other.gameObject.tag == "Laser")
         {
             Disable();
@@ -181,58 +142,56 @@ public class PlayerMovement : MonoBehaviour
             {
                 LaserContact();
             }
-
         }
 
         if (other.gameObject.tag == "AmmoCrate")
         {
+            ammo.Play();
             theGun.ammo = theGun.ammo + ammoPickUp;
             Destroy(other.gameObject);
-            addAmmo.text = "+" + ammoPickUp.ToString();
-            Destroy(addAmmo, 5f);
         }
 
         if (other.gameObject.tag == "Heal" && other.gameObject.tag != "FloorTrap")
         {
+            heal.Play();
             Destroy(other.gameObject, mediPackTimer);
+        }
+
+        if (other.gameObject.tag != "Heal" && other.gameObject.tag == "FloorTrap")
+        {
+            burning.Play();
         }
 
         if (other.gameObject.tag == "NoStandZone")
         {
-            cansStand = false;
+            gun.SetActive(false);
             boxCollider.enabled = false;
         }
 
         if (other.gameObject.tag == "StandZone")
         {
-            cansStand = true;
+            gun.SetActive(true);
             boxCollider.enabled = true;
         }
 
         if (other.tag == "Finish")
         {
-            //StartCoroutine(Fading());
+            gameObject.SetActive(true);
             Disable();
+
             if (OnLevelComplete != null)
             {
                 OnLevelComplete();
                 disablePlayer = true;
-                isCrawling = false;
-                
-
             }
         }
     }
 
-
-
     void FixedUpdate()
     {
-        //disablePlayer = false;
-
+        //What determines how the player moves
         if (disablePlayer == false)
         {
-           // playerAnimator.SetBool("IsWalking", true);
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
             rb.AddForce(new Vector3(horizontal * moveSpeed * Time.deltaTime,
@@ -244,6 +203,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDestroy()
     {
+        //Uses PlayerSpotted for gameover and disable player
         FieldOfViewDetection.PlayerSpotted -= Disable;
     }
 

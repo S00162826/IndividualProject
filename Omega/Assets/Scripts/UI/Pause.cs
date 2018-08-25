@@ -2,8 +2,12 @@
 
 public class Pause : MonoBehaviour
 {
+    //This is so the win lose condition script know when to
+    //activate certain methods
     public static event System.Action GameIsPaused;
     public static event System.Action GameIsUnPaused;
+
+    //Want to access canvas'
     public Transform canvas;
     public Transform HealthCanvas;
     public Transform MiniMapCanvas;
@@ -14,28 +18,20 @@ public class Pause : MonoBehaviour
 
     public void Update()
     {
+        //Uses Pause method when Escape is pressed
         if (GameIsPaused != null)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Paused();
-               // GameIsPaused();
             }
         }
-        //else 
-        //    if (Input.GetKeyDown(KeyCode.Escape))
-        //    {
-        //        //Paused();
-        //        GameIsUnPaused();
-        //    }
-        
-        
-       
-        
-
-
     }
 
+    //What I want to happen when the game is paused
+    //Freeze time
+    //Hide other canvas'
+    //stop audio
     public void Paused()
     {
         if (canvas.gameObject.activeInHierarchy == false)

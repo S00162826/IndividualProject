@@ -4,34 +4,23 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-
+    //Can set what the camera looks at in inspector
     public Transform target;
 
+    //The speed the camera follows at
     public float smoothSpeed = 0.125f;
+
+    //Camera Position
     private Vector3 offset = new Vector3(0f, 60f, -20f);
 
-    private bool standing = true;
 
     void LateUpdate()
     {
+        //Using the variables above to follow the target smoothly
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(target.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
         transform.LookAt(target);
     }
 
-    void ChangeCameraAngle()
-    {
-
-        if (Input.GetKeyDown("c") && standing == true)
-        {
-            standing = false;
-            offset = new Vector3(0f, 70f, -0f);
-        }
-        else if (Input.GetKeyDown("c") && standing == false)
-        {
-            standing = true;
-            offset = new Vector3(0f, 50f, -20f);
-        }
-    }
 }

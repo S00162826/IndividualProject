@@ -31,6 +31,16 @@ TagManager:
   - TheEnd
   - FinalWall
   - CollectableCollider
+  - GunSFX
+  - DoorSFX
+  - CollectableSFX
+  - KeySFX
+  - HealthSFX
+  - BurningSFX
+  - ShootingSFX
+  - ExplosionSFX
+  - ButtonSFX
+  - EnterSFX
   layers:
   - Default
   - TransparentFX

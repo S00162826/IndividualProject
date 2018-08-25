@@ -18,7 +18,7 @@ public class NPCPatrol : MonoBehaviour
 
     //Probability of changing direction
     [SerializeField]
-    float switchProbability/* = 0.2f*/;
+    float switchProbability;
 
     //List of waypoints
     [SerializeField]
@@ -75,7 +75,6 @@ public class NPCPatrol : MonoBehaviour
             //Check if close to destination
             if (travelling && navMeshAgent.remainingDistance <= 1.0f)
             {
-                //anim.SetBool("IsWalking", true);
                 travelling = false;
 
                 //If going to wait, then wait
@@ -97,7 +96,6 @@ public class NPCPatrol : MonoBehaviour
             //If waiting
             if (waiting)
             {
-                //anim.SetBool("IsWalking", false);
                 waitTimer += Time.deltaTime;
                 if (waitTimer >= totalWaitTime)
                 {
@@ -136,7 +134,6 @@ public class NPCPatrol : MonoBehaviour
             if (patrolForward)
             {
                 currentPatrolIndex++;
-               // anim.SetBool("IsWalking", true);
                 if (currentPatrolIndex >= patrolPoints.Count)
                 {
                     currentPatrolIndex = 0;
@@ -145,7 +142,6 @@ public class NPCPatrol : MonoBehaviour
 
             else
             {
-                //anim.SetBool("IsWalking", false);
                 currentPatrolIndex--;
 
                 if (currentPatrolIndex < 0)

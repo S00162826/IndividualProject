@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class WinLoseConditions : MonoBehaviour
 {
+    //Canvas' I want to access
     public Transform LoseCanvas;
     public Transform WinCanvas;
 
@@ -15,35 +16,38 @@ public class WinLoseConditions : MonoBehaviour
     public Transform ItemCanvas;
     public Canvas PauseCanvas;
 
+    //So I can determine what happens when the game is over
     bool gameIsOver;
 
     void Start()
     {
+        //Assigns actions in other classes to use the methods in this class
         FieldOfViewDetection.PlayerSpotted += GameOverDisplay;
         FindObjectOfType<PlayerMovement>().OnLevelComplete += LevelCompleteDisplay;
         FindObjectOfType<PlayerMovement>().LaserContact += GameOverDisplay;
         FindObjectOfType<Health>().NoHealth += GameOverDisplay;
     }
 
+    //What I want to happen when game is over
     public void GameOverDisplay()
     {
         LoseCanvas.gameObject.SetActive(true);
-        Destroy(PauseCanvas);
         gameIsOver = true;
         FieldOfViewDetection.PlayerSpotted -= GameOverDisplay;
         FindObjectOfType<PlayerMovement>().OnLevelComplete -= LevelCompleteDisplay;
         Time.timeScale = 0.1f;
+        GameObject.Find("GameController").GetComponent<Pause>().enabled = false;
     }
 
+    //What I want to happen when the player completes a level
     public void LevelCompleteDisplay()
     {
-        Destroy(PauseCanvas);
         WinCanvas.gameObject.SetActive(true);
         MinimapCanvas.gameObject.SetActive(false);
         HealthCanvas.gameObject.SetActive(false);
         WeaponCanvas.gameObject.SetActive(false);
         ItemCanvas.gameObject.SetActive(false);
         gameIsOver = true;
-        //FieldOfViewDetection.PlayerSpotted -= GameOverDisplay;
+        GameObject.Find("GameController").GetComponent<Pause>().enabled = false;
     }
 }

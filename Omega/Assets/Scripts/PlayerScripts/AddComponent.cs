@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class AddComponent : MonoBehaviour
 {
-
+    //bools to check what the player can do
     public bool canCrawl = true;
     public bool cansStand = true;
-    private SkinnedMeshRenderer SkinMeshRenderer;
-    private BoxCollider boxCollider;
     private bool isCrawling = true;
+
+    //A mesh renderer or in this case skinned mesh renderer
+    //Is the visual of an object
+    //E.g. if a cubes mesh renderer is turned off te cube is invisible
+    private SkinnedMeshRenderer SkinMeshRenderer;
+
+    //Box collider variable
+    private BoxCollider boxCollider;
+    
 
     void Start()
     {
+        //Finds wanted SkinMeshRenderer
         SkinMeshRenderer = GetComponent<SkinnedMeshRenderer>();
+
+        //Finds wanted BoxCollider
         boxCollider = GetComponent<BoxCollider>();
     }
 
@@ -25,7 +35,11 @@ public class AddComponent : MonoBehaviour
             cansStand = true;
         }
 
-
+        //Under certain conditions the mesh render will be turned off or on
+        //the box collider will also be changed to fit the purpose
+        //this creates the illusion that the player is going from standing
+        //to crawling or vice versa when in actuallity there is constantly a 
+        //standing player and contantly a crawling player but only one can be active at a time
         if (other.gameObject.tag == "NoStandZone" && isCrawling == true)
         {
             cansStand = false;
@@ -44,32 +58,4 @@ public class AddComponent : MonoBehaviour
             SkinMeshRenderer.enabled = false;
         }
     }
-
-        private void Standing()
-    {
-
-        //if (canCrawl == true)
-        //{
-        //    if (Input.GetKeyUp("c") && isCrawling == true)
-        //    {
-        //        boxCollider.enabled = true;
-        //        isCrawling = false;
-        //        SkinMeshRenderer.enabled = true;
-        //    }
-        //    else if (Input.GetKeyUp("c") && isCrawling == false)
-        //    {
-        //        boxCollider.enabled = false;
-        //        isCrawling = true;
-        //        SkinMeshRenderer.enabled = false;
-        //    }
-        //}
-    }
-
-
-        // Update is called once per frame
-        void Update()
-        {
-        if(cansStand == true)
-        Standing();
-        }
-    }
+}

@@ -4,26 +4,35 @@ using UnityEngine;
 
 public class FieldOfViewDetection : MonoBehaviour
 {
+    //This is so the win lose condition script know when to
+    //activate certain methods
     public static event System.Action PlayerSpotted;
+
+    //The player is what the target will be for the enemy
+    //set game object too because I decided i wanted 
+    //the player to also be destroyed under certain conditions
     public Transform player;
     public GameObject playerObject;
+
+    //I can set how far and wide I want their vision
+    //to be
     public float maxAngle;
     public float maxRadius;
 
+    //So I can decide what happens when the player is caught
     private bool isInFOV = false;
 
-    //public Light spotLight;
-    //Color spotlightOriginalColor;
+    //Means there is a slight delay before the player is caughts
+    //Just looks nicer than having them caught suddenly
     float playerCaughtTimer;
     float timeToSpotPlayer = .1f;
 
-    private void Start()
-    {
-       // spotlightOriginalColor = spotLight.color;
-    }
-
     public void OnDrawGizmos()
     {
+        //This is all for the editor
+        //Gizmos do not appear in runtime
+        //Just for visual representaion of whats happening
+        //and makes it easier to test
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position,maxRadius);
 
@@ -45,6 +54,10 @@ public class FieldOfViewDetection : MonoBehaviour
 
     }
 
+    //This determines whether the player is "seen" or not.
+    //There is a line from the enemy to the player constantly
+    //If this line intersects the width and distance i.e. radius and angle
+    //of their vision the player is in the their field of vision
     public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius)
     {
         Collider[] overlaps = new Collider[10];
@@ -83,9 +96,10 @@ public class FieldOfViewDetection : MonoBehaviour
     private void Update()
     {
         isInFOV = inFOV(transform, player, maxAngle, maxRadius);
+
+        //Can decide what happens when they are in the field of vision
         if (isInFOV == true)
-        {
-            
+        {           
             playerCaughtTimer += Time.deltaTime;
         }
         else
@@ -93,10 +107,10 @@ public class FieldOfViewDetection : MonoBehaviour
             playerCaughtTimer -= Time.deltaTime;
         }
         playerCaughtTimer = Mathf.Clamp(playerCaughtTimer, 0, timeToSpotPlayer);
-        //spotLight.color = Color.Lerp(spotlightOriginalColor, Color.red, playerCaughtTimer / timeToSpotPlayer);
 
         if (playerCaughtTimer >= timeToSpotPlayer)
         {
+            //PlayerSpotted will casue GameOverDisplay in WInLoseConditions to activate
             if (PlayerSpotted != null)
             {
                 PlayerSpotted();

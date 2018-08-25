@@ -6,16 +6,29 @@ using UnityEngine.UI;
 
 public class ReplayLevel : MonoBehaviour
 {
-
+    //will input inspector to chose level
+    //for button
     public int index;
     public string levelName;
 
+    //Animation variables
     public Image black;
     public Animator anim;
 
+    //audio variable
+    AudioSource buttonSound;
 
+    void Start()
+    {
+        //finds audio source
+        buttonSound = GameObject.FindGameObjectWithTag("ButtonSFX").GetComponent<AudioSource>();
+    }
+
+    //Method to choose in inspector on button
     public void NewGameBtn()
     {
+        buttonSound.Play();
+        Time.timeScale = 1;
         StartCoroutine(Fading());
     }
 

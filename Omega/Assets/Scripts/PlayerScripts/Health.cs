@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
     bool disabled;
 
     //Want this canvas to display when player dies
-    public Canvas GameOver;
+    //public Canvas GameOver;
 
     //Also to show players health in text format
     public Text healthText;

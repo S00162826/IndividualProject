@@ -1967,7 +1967,6 @@ GameObject:
   - component: {fileID: 397572344}
   - component: {fileID: 397572343}
   - component: {fileID: 397572340}
-  - component: {fileID: 397572339}
   - component: {fileID: 397572346}
   m_Layer: 0
   m_Name: PlayerAnimatedWithGun
@@ -1994,21 +1993,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &397572339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114842278311305596, guid: 8dc88744735062b4aa3bc8b7c1ce6eb5,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 397572337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e81dcbf12d7654b418917a1cb071b6f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunPickedUp: {fileID: 0}
-  ammo: {fileID: 0}
-  pickUp: {fileID: 0}
 --- !u!65 &397572340
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2037,12 +2021,12 @@ MonoBehaviour:
   moveSpeed: 5000
   mainCamera: {fileID: 1550901842}
   theGun: {fileID: 1161535774}
-  addAmmo: {fileID: 0}
-  ammoPickUp: 12
-  mediPackTimer: 0.5
   gun: {fileID: 1161535772}
   animator: {fileID: 1224144306}
   Black: {fileID: 1224144307}
+  addAmmo: {fileID: 0}
+  ammoPickUp: 12
+  mediPackTimer: 0.5
 --- !u!54 &397572344
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4121,7 +4105,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 972485397}
-  m_LocalRotation: {x: 0.50330716, y: 0.54925936, z: -0.35031387, w: 0.56769395}
+  m_LocalRotation: {x: 0.5033071, y: 0.5492593, z: -0.35031384, w: 0.5676939}
   m_LocalPosition: {x: 0.027946193, y: 0.0001994884, z: -0.04662393}
   m_LocalScale: {x: 0.9999998, y: 0.99999976, z: 0.9999998}
   m_Children:
@@ -4589,7 +4573,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1091016883}
-  m_LocalRotation: {x: 0.50330716, y: 0.54925936, z: -0.35031387, w: 0.56769395}
+  m_LocalRotation: {x: 0.5033071, y: 0.5492593, z: -0.35031384, w: 0.5676939}
   m_LocalPosition: {x: 0.027946193, y: 0.0001994884, z: -0.04662393}
   m_LocalScale: {x: 0.9999998, y: 0.99999976, z: 0.9999998}
   m_Children:

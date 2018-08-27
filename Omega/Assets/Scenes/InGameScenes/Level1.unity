@@ -7128,7 +7128,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1505269462466068, guid: 887918c2a44452746854d66db27f55d6, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114463898359477628, guid: 887918c2a44452746854d66db27f55d6,
         type: 2}
@@ -7225,6 +7225,10 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505269462466068, guid: 887918c2a44452746854d66db27f55d6, type: 2}
+      propertyPath: m_TagString
+      value: GameOver
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 887918c2a44452746854d66db27f55d6, type: 2}
@@ -13206,7 +13210,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2061670705}
-  - component: {fileID: 2061670707}
   - component: {fileID: 2061670704}
   - component: {fileID: 2061670702}
   - component: {fileID: 2061670706}
@@ -13296,24 +13299,13 @@ MonoBehaviour:
   levelName: MainMenu
   black: {fileID: 1224144307}
   anim: {fileID: 1224144306}
---- !u!114 &2061670707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2061670701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb52fd830d7517647ac20256df69be6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2061670708
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2061670701}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb52fd830d7517647ac20256df69be6e, type: 3}
   m_Name: 

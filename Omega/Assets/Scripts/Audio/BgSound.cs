@@ -9,6 +9,11 @@ public class BgSound : MonoBehaviour {
     private static BgSound instance = null;
     public static BgSound Instance { get { return instance; } }
 
+    //private void Start()
+    //{
+    //    Instance.gameObject.GetComponent<AudioSource>().Play();
+    //}
+
     private void Awake()
     {
         //Stops the audio being destroyed on a new scene i.e. 

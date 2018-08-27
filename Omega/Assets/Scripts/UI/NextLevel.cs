@@ -18,16 +18,29 @@ public class NextLevel : MonoBehaviour
     //audio variable
     AudioSource buttonSound;
 
+    //Need to access canvas because was destroying itself on load 
+    private Canvas LoseCanvas;
+
     void Start()
     {
         //finds audio source
         buttonSound = GameObject.FindGameObjectWithTag("ButtonSFX").GetComponent<AudioSource>();
+
+        //finds canvas
+        LoseCanvas = GameObject.FindGameObjectWithTag("GameOver").GetComponent<Canvas>();
+
+
     }
+    
+
+
 
     //Method to choose in inspector on button
     public void NewGameBtn()
     {
         buttonSound.Play();
+        KeepGameOverCanvas();
+
         StartCoroutine(Fading());
     }
 
@@ -36,5 +49,14 @@ public class NextLevel : MonoBehaviour
         anim.SetBool("fade", true);
         yield return new WaitUntil(() => black.color.a == 1);
         SceneManager.LoadScene(index);
+    }
+
+    void KeepGameOverCanvas()
+    {
+
+        LoseCanvas.transform.SetParent(null, false);
+        DontDestroyOnLoad(LoseCanvas);
+        LoseCanvas.gameObject.SetActive(false);
+
     }
 }

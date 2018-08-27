@@ -204,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnDestroy()
     {
         //Uses PlayerSpotted for gameover and disable player
-        FieldOfViewDetection.PlayerSpotted -= Disable;
+        //FieldOfViewDetection.PlayerSpotted -= Disable;
     }
 
 }

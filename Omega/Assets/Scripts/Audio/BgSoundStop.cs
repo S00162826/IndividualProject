@@ -13,7 +13,7 @@ public class BgSoundStop : MonoBehaviour
     void Start()
     {
         //Stops Audio
-        BgSound.Instance.gameObject.GetComponent<AudioSource>().Stop();
+        BgSound.Instance.gameObject.GetComponent<AudioSource>().volume=0;
     }
 
 }

@@ -41,6 +41,7 @@ TagManager:
   - ExplosionSFX
   - ButtonSFX
   - EnterSFX
+  - GameOver
   layers:
   - Default
   - TransparentFX

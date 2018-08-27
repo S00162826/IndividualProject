@@ -18101,7 +18101,6 @@ MonoBehaviour:
   currentHealth: {fileID: 33601510}
   health: 100
   maxHealth: 100
-  GameOver: {fileID: 810055438}
   healthText: {fileID: 560958814}
 --- !u!114 &640418299
 MonoBehaviour:
@@ -18157,7 +18156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd0865e67c945a4587afa055c3b035a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoseCanvas: {fileID: 810055435}
   WinCanvas: {fileID: 1876509278}
   MinimapCanvas: {fileID: 1995139138}
   HealthCanvas: {fileID: 1246250662}
@@ -18179,7 +18177,7 @@ MonoBehaviour:
   doesPlayerHaveKey: 0
   doesPlayerHaveLvl2Key: 0
   doesPlayerHaveLvl3Key: 0
-  doesPlayerHaveLvl4Key: 0
+  doesPlayerHaveLvl4Key: 1
   keyPickedUp: {fileID: 25806614}
   lvl2KeyPickedUp: {fileID: 1555837315}
   lvl3KeyPickedUp: {fileID: 1150960347}
@@ -18199,10 +18197,10 @@ MonoBehaviour:
   moveSpeed: 5000
   mainCamera: {fileID: 1550901842}
   theGun: {fileID: 1978747069}
-  gun: {fileID: 0}
+  gun: {fileID: 1978747067}
   animator: {fileID: 1224144306}
   Black: {fileID: 1224144307}
-  addAmmo: {fileID: 0}
+  addAmmo: {fileID: 1461160999}
   ammoPickUp: 12
   mediPackTimer: 0.1
 --- !u!54 &640418305
@@ -22171,11 +22169,6 @@ Transform:
 --- !u!224 &810055435 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224225127669445170, guid: 887918c2a44452746854d66db27f55d6,
-    type: 2}
-  m_PrefabInternal: {fileID: 995507183}
---- !u!223 &810055438 stripped
-Canvas:
-  m_PrefabParentObject: {fileID: 223048954437880844, guid: 887918c2a44452746854d66db27f55d6,
     type: 2}
   m_PrefabInternal: {fileID: 995507183}
 --- !u!1 &815340392
@@ -27063,7 +27056,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1505269462466068, guid: 887918c2a44452746854d66db27f55d6, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114463898359477628, guid: 887918c2a44452746854d66db27f55d6,
         type: 2}
@@ -27160,6 +27153,10 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505269462466068, guid: 887918c2a44452746854d66db27f55d6, type: 2}
+      propertyPath: m_TagString
+      value: GameOver
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 887918c2a44452746854d66db27f55d6, type: 2}
@@ -40088,6 +40085,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44c446c0bf8066a4aa3941cc901a7e6a, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1461160999 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114966094631723998, guid: 44c446c0bf8066a4aa3941cc901a7e6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1461160998}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1461479975
 Prefab:
   m_ObjectHideFlags: 0

@@ -116,7 +116,7 @@ e1ff970319fa33ba4daa3ef83c5282a8 Assembly-CSharp.dll:.CrawlingAnimation
 7556318b1ae8d2357e788b6de279526e Assembly-CSharp.dll:LowPolyWater.LowPolyWater
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BgSoundFinalLevel
 60503d60128935356b08f97fd7881629 Assembly-CSharp.dll:.Collectable
-755e7279a9c39d76ed2ab9d2fcd3f7b6 Assembly-CSharp.dll:.Health
+3fdb076ebea7598a7497d6929d6ea8a4 Assembly-CSharp.dll:.Health
 952e9fa5817ba7f4c977bf345593f9f6 Assembly-CSharp.dll:.PlayerMovement
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
@@ -167,7 +167,7 @@ c5d69fb5986f78dad369ed179c09db44 Assembly-CSharp.dll:.RemoveComponent
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.HealthBarRotation
 c986a67ff1cffee39f75d527834081fb Assembly-CSharp.dll:.FieldOfViewDetection
 65e9e0c9a58793a2ffa87cc52075d057 Assembly-CSharp.dll:.ArmedEnemy
-96debee1c778e6d78e759cc38b2c81af Assembly-CSharp.dll:.WinLoseConditions
+74efb5a1300d8d15b04e2fbf58b8d4de Assembly-CSharp.dll:.WinLoseConditions
 dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.BulletController
 1a1f5e93672f0785e04fad5b12e457fb Assembly-CSharp.dll:.ExitToMainMenu
 bff0b4eecb55a4c99acac1e3240cee96 Assembly-CSharp.dll:.Waypoint
